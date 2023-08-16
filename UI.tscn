@@ -1,0 +1,276 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccy4uqqmuum3u"]
+
+[ext_resource type="PackedScene" uid="uid://dxbg2v4enxere" path="res://towericon.tscn" id="1_e2dg5"]
+[ext_resource type="Script" path="res://Sidebar.gd" id="1_qx565"]
+[ext_resource type="Script" path="res://Shop.gd" id="1_yiypj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5354"]
+size = Vector2(174, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gxv3"]
+size = Vector2(748, 103.5)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(87, 324)
+shape = SubResource("RectangleShape2D_h5354")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(548, 52.25)
+shape = SubResource("RectangleShape2D_6gxv3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 175.0
+offset_bottom = 648.0
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 922.0
+offset_top = 1.0
+offset_right = 1025.0
+offset_bottom = 748.0
+rotation = 1.57079
+
+[node name="Sidebar" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 171.0
+offset_bottom = 645.0
+script = ExtResource("1_qx565")
+
+[node name="Inspector" type="VBoxContainer" parent="Sidebar"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Sidebar/Inspector"]
+layout_mode = 2
+text = "Inspector"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Sidebar/Inspector"]
+layout_mode = 2
+
+[node name="DPSContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Inspector/DPSContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Damage/s"
+
+[node name="SpinBox" type="Label" parent="Sidebar/Inspector/DPSContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Null"
+horizontal_alignment = 1
+
+[node name="KilledContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Inspector/KilledContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Killed"
+
+[node name="SpinBox" type="Label" parent="Sidebar/Inspector/KilledContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Null"
+horizontal_alignment = 1
+
+[node name="HealthContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Inspector/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Health"
+
+[node name="HealthBox" type="Label" parent="Sidebar/Inspector/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Null"
+horizontal_alignment = 1
+
+[node name="CooldownContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Inspector/CooldownContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cooldown"
+
+[node name="SpinBox" type="Label" parent="Sidebar/Inspector/CooldownContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Null"
+horizontal_alignment = 1
+
+[node name="TimeContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Inspector/TimeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Time
+"
+
+[node name="TimeBox" type="Label" parent="Sidebar/Inspector/TimeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Null"
+horizontal_alignment = 1
+
+[node name="Editor" type="VBoxContainer" parent="Sidebar"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Sidebar/Editor"]
+layout_mode = 2
+text = "Editor"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Sidebar/Editor"]
+layout_mode = 2
+
+[node name="DamageContainer" type="HBoxContainer" parent="Sidebar/Editor"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Editor/DamageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Damage"
+
+[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/DamageContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+
+[node name="RangeContainer" type="HBoxContainer" parent="Sidebar/Editor"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Editor/RangeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Range"
+
+[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/RangeContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+
+[node name="HealthContainer" type="HBoxContainer" parent="Sidebar/Editor"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Editor/HealthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Health"
+
+[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/HealthContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+
+[node name="CooldownContainer" type="HBoxContainer" parent="Sidebar/Editor"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Editor/CooldownContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cooldown"
+
+[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/CooldownContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+
+[node name="ChargeContainer" type="HBoxContainer" parent="Sidebar/Editor"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Sidebar/Editor/ChargeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Charge
+"
+
+[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/ChargeContainer"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sidebar/Editor"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Sidebar/Editor/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Price"
+
+[node name="Outliner" type="VBoxContainer" parent="Sidebar"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Sidebar/Outliner"]
+layout_mode = 2
+text = "Outliner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Sidebar/Outliner"]
+layout_mode = 2
+
+[node name="Enemy" type="Button" parent="Sidebar/Outliner"]
+layout_mode = 2
+text = "Summon Enemies"
+
+[node name="Shop" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 177.0
+offset_right = 919.0
+offset_bottom = 98.0
+script = ExtResource("1_yiypj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Shop"]
+layout_mode = 2
+
+[node name="TowerButton" type="Button" parent="Shop"]
+layout_mode = 2
+text = "                 "
+
+[node name="Tower" parent="Shop/TowerButton" instance=ExtResource("1_e2dg5")]
+position = Vector2(39, 49)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="pressed" from="Sidebar/Outliner/Enemy" to="Shop" method="_on_enemy_pressed"]
+[connection signal="pressed" from="Shop/TowerButton" to="Shop" method="_on_tower_button_pressed"]

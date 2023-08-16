@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpoxb8wm5og7x"]
+
+[ext_resource type="PackedScene" uid="uid://bjalfdycvpln1" path="res://enemy.tscn" id="1_wx8m1"]
+[ext_resource type="PackedScene" uid="uid://b7nh6riqbggx4" path="res://tower.tscn" id="2_aqf4x"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_wx8m1")]
+position = Vector2(565, 286)
+
+[node name="Node2D" parent="." instance=ExtResource("2_aqf4x")]
+position = Vector2(364, 312)
