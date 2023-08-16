@@ -570,7 +570,7 @@ show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_3w6eh")
-scale = Vector2(0.07, 0.07)
+scale = Vector2(0.215, 0.215)
 sprite_frames = SubResource("SpriteFrames_mm34s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
