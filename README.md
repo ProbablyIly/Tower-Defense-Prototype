@@ -1,2 +1,2 @@
 # Tower Defense Game
- This is a small tower defense game I work on as a side project
+ I'm still learning Godot and this is a small prototype I'm working on alongside my uni studies to improve and learn the engine better
