@@ -124,7 +124,7 @@
 [ext_resource type="Texture2D" uid="uid://qtmciwh1yavc" path="res://Assets/MainTowerTop/0120.png" id="121_m6iqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iopr"]
-radius = 15.8511
+radius = 11.0255
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbfxc"]
 bg_color = Color(0.32549, 0.32549, 0.32549, 0.415686)
@@ -570,7 +570,7 @@ show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_3w6eh")
-scale = Vector2(0.215, 0.215)
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_mm34s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]

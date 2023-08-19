@@ -8,17 +8,15 @@ extends StaticBody2D
 
 @onready var sprite =  $AnimatedSprite2D
 
-
 var creationTime: float = 0
 var minutes = 0
 var hours = 0
 var mins = 0
 
 
-
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	creationTime = Time.get_ticks_msec() / 1000.0
-
 
 func _process(delta):
 	if hp.value < 1:
@@ -34,9 +32,11 @@ func _process(delta):
 		for node in get_tree().get_nodes_in_group("selectable"):
 			if node.is_in_group("selection"):
 				node.sprite.material.set_shader_parameter("apply_outline", 1)
+				node.sprite.material.set_shader_parameter("width", 6)
 				global.CurrentSelection = node
 			else:
 				node.sprite.material.set_shader_parameter("apply_outline", 0)
+				node.sprite.material.set_shader_parameter("width", 6)
 
 func take_damage(dmg):
 	if placed:
