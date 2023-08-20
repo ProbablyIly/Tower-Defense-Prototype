@@ -1,9 +1,9 @@
 extends HBoxContainer
 
 @onready var CurrentTower = null
-var tower_scene = load("res://tower.tscn")
-var enemy_scene = load("res://enemy.tscn")
-var barricade_scene = load("res://obstacle.tscn")
+var tower_scene = load("res://Towers/tower.tscn")
+var enemy_scene = load("res://Enemies/enemy.tscn")
+var barricade_scene = load("res://Towers/obstacle.tscn")
 var IsSelected = false
 
 @onready var alpha = Color.WHITE

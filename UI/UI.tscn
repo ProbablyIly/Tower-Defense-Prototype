@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccy4uqqmuum3u"]
 
-[ext_resource type="PackedScene" uid="uid://dxbg2v4enxere" path="res://towericon.tscn" id="1_e2dg5"]
-[ext_resource type="Script" path="res://Sidebar.gd" id="1_qx565"]
-[ext_resource type="Script" path="res://Shop.gd" id="1_yiypj"]
-[ext_resource type="Texture2D" uid="uid://ktr5tafdr0cf" path="res://Assets/Barricade/Barricade.png" id="4_o16pr"]
+[ext_resource type="Script" path="res://UI/Sidebar.gd" id="1_u8r1p"]
+[ext_resource type="Script" path="res://UI/Shop.gd" id="2_e2rvp"]
+[ext_resource type="PackedScene" uid="uid://dxbg2v4enxere" path="res://towericon.tscn" id="3_ef7b5"]
+[ext_resource type="Texture2D" uid="uid://ktr5tafdr0cf" path="res://Assets/Barricade/Barricade.png" id="4_r6ywg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5354"]
 size = Vector2(174, 648)
@@ -48,7 +48,7 @@ layout_mode = 0
 offset_left = 6.0
 offset_right = 171.0
 offset_bottom = 645.0
-script = ExtResource("1_qx565")
+script = ExtResource("1_u8r1p")
 
 [node name="Inspector" type="VBoxContainer" parent="Sidebar"]
 layout_mode = 2
@@ -260,7 +260,7 @@ layout_mode = 0
 offset_left = 177.0
 offset_right = 919.0
 offset_bottom = 98.0
-script = ExtResource("1_yiypj")
+script = ExtResource("2_e2rvp")
 
 [node name="MarginContainer" type="MarginContainer" parent="Shop"]
 layout_mode = 2
@@ -269,7 +269,7 @@ layout_mode = 2
 layout_mode = 2
 text = "                 "
 
-[node name="Tower" parent="Shop/TowerButton" instance=ExtResource("1_e2dg5")]
+[node name="Tower" parent="Shop/TowerButton" instance=ExtResource("3_ef7b5")]
 position = Vector2(39, 49)
 scale = Vector2(0.8, 0.8)
 
@@ -281,7 +281,7 @@ text = "                 "
 position = Vector2(44, 45)
 rotation = 0.825269
 scale = Vector2(0.08, 0.08)
-texture = ExtResource("4_o16pr")
+texture = ExtResource("4_r6ywg")
 
 [connection signal="pressed" from="Sidebar/Outliner/Enemy" to="Shop" method="_on_enemy_pressed"]
 [connection signal="pressed" from="Shop/TowerButton" to="Shop" method="_on_tower_button_pressed"]

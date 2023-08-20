@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccrk2sk0gy4"]
 
-[ext_resource type="Script" path="res://obstacle.gd" id="1_bplsg"]
-[ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Outline.tres" id="2_0m68x"]
-[ext_resource type="Texture2D" uid="uid://ykuesallfge6" path="res://Assets/Barricade/BarricadeTop.png" id="2_8o1si"]
-[ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://RotationTool.tscn" id="4_fdues"]
+[ext_resource type="Script" path="res://Towers/obstacle.gd" id="1_13bfh"]
+[ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Towers/Outline.tres" id="2_4eg1o"]
+[ext_resource type="Texture2D" uid="uid://ykuesallfge6" path="res://Assets/Barricade/BarricadeTop.png" id="3_yrejs"]
+[ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://RotationTool.tscn" id="4_ghylv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pchk5"]
 radius = 9.33334
@@ -20,7 +20,7 @@ radius = 28.0
 height = 242.0
 
 [node name="Obstacle" type="StaticBody2D" groups=["selectable", "tower"]]
-script = ExtResource("1_bplsg")
+script = ExtResource("1_13bfh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 0)
@@ -46,9 +46,9 @@ value = 90.0
 show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("2_0m68x")
+material = ExtResource("2_4eg1o")
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_8o1si")
+texture = ExtResource("3_yrejs")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -58,7 +58,7 @@ position = Vector2(-3, 0)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_bu131")
 
-[node name="Node2D" parent="." instance=ExtResource("4_fdues")]
+[node name="Node2D" parent="." instance=ExtResource("4_ghylv")]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
