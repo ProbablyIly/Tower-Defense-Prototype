@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccrk2sk0gy4"]
+[gd_scene load_steps=9 format=3 uid="uid://ccrk2sk0gy4"]
 
 [ext_resource type="Script" path="res://obstacle.gd" id="1_bplsg"]
 [ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Outline.tres" id="2_0m68x"]
 [ext_resource type="Texture2D" uid="uid://ykuesallfge6" path="res://Assets/Barricade/BarricadeTop.png" id="2_8o1si"]
+[ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://RotationTool.tscn" id="4_fdues"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pchk5"]
 radius = 9.33334
@@ -56,6 +57,8 @@ visible = false
 position = Vector2(-3, 0)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_bu131")
+
+[node name="Node2D" parent="." instance=ExtResource("4_fdues")]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
