@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccy4uqqmuum3u"]
+[gd_scene load_steps=8 format=3 uid="uid://ccy4uqqmuum3u"]
 
 [ext_resource type="Script" path="res://UI/Sidebar.gd" id="1_u8r1p"]
 [ext_resource type="Script" path="res://UI/Shop.gd" id="2_e2rvp"]
-[ext_resource type="PackedScene" uid="uid://dxbg2v4enxere" path="res://towericon.tscn" id="3_ef7b5"]
+[ext_resource type="PackedScene" uid="uid://dxbg2v4enxere" path="res://Towers/Icons/towericon.tscn" id="3_ef7b5"]
 [ext_resource type="Texture2D" uid="uid://ktr5tafdr0cf" path="res://Assets/Barricade/Barricade.png" id="4_r6ywg"]
+[ext_resource type="PackedScene" uid="uid://chrqx6on3cmkc" path="res://Towers/Icons/sawicon.tscn" id="5_t4ebf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5354"]
 size = Vector2(174, 648)
@@ -283,6 +284,15 @@ rotation = 0.825269
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("4_r6ywg")
 
+[node name="SawButton" type="Button" parent="Shop"]
+layout_mode = 2
+text = "                 "
+
+[node name="Tower2" parent="Shop/SawButton" instance=ExtResource("5_t4ebf")]
+position = Vector2(40, 49)
+scale = Vector2(0.8, 0.8)
+
 [connection signal="pressed" from="Sidebar/Outliner/Enemy" to="Shop" method="_on_enemy_pressed"]
 [connection signal="pressed" from="Shop/TowerButton" to="Shop" method="_on_tower_button_pressed"]
 [connection signal="pressed" from="Shop/BarricadeButton" to="Shop" method="_on_barricade_button_pressed"]
+[connection signal="pressed" from="Shop/SawButton" to="Shop" method="_on_saw_button_pressed"]

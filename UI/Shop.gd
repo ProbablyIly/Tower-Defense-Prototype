@@ -4,6 +4,7 @@ extends HBoxContainer
 var tower_scene = load("res://Towers/tower.tscn")
 var enemy_scene = load("res://Enemies/enemy.tscn")
 var barricade_scene = load("res://Towers/obstacle.tscn")
+var saw_scene = load("res://Towers/sawbladetower.tscn")
 var IsSelected = false
 
 @onready var alpha = Color.WHITE
@@ -48,4 +49,11 @@ func _on_barricade_button_pressed():
 	var barricade_instance = barricade_scene.instantiate()
 	get_tree().get_root().add_child(barricade_instance)
 	CurrentTower = barricade_instance
+	IsSelected = true
+
+
+func _on_saw_button_pressed():
+	var saw_instance = saw_scene.instantiate()
+	get_tree().get_root().add_child(saw_instance)
+	CurrentTower = saw_instance
 	IsSelected = true

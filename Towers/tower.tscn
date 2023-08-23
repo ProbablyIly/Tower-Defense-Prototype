@@ -570,6 +570,7 @@ show_percentage = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_qocnl")
+rotation = -0.785397
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_mm34s")
 
