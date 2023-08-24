@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Towers/obstacle.gd" id="1_13bfh"]
 [ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Towers/Outline.tres" id="2_4eg1o"]
 [ext_resource type="Texture2D" uid="uid://ykuesallfge6" path="res://Assets/Barricade/BarricadeTop.png" id="3_yrejs"]
-[ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://RotationTool.tscn" id="4_ghylv"]
+[ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://UI/RotationTool.tscn" id="4_ghylv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pchk5"]
 radius = 9.33334

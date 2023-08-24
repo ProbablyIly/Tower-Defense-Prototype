@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3q6y1wrryui0"]
+[gd_scene load_steps=5 format=3 uid="uid://d3q6y1wrryui0"]
 
 [ext_resource type="Script" path="res://UI/RotationTool.gd" id="1_ei7w1"]
 
@@ -6,12 +6,15 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3opu"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vcflu"]
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_ei7w1")
 
 [node name="Middle" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Middle"]
+position = Vector2(76, 0)
 scale = Vector2(20, 20)
 texture = SubResource("PlaceholderTexture2D_nwjdw")
 
@@ -22,5 +25,22 @@ scale = Vector2(0.05, 0.05)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_h3opu")
 
+[node name="Movement" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Movement"]
+modulate = Color(0.8, 0, 0.0400002, 1)
+position = Vector2(7.62939e-06, 0)
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_vcflu")
+
+[node name="Movement" type="Area2D" parent="Movement/Sprite2D"]
+scale = Vector2(0.05, 0.05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Movement/Sprite2D/Movement"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_h3opu")
+
 [connection signal="mouse_entered" from="Middle/Sprite2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Middle/Sprite2D/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="Movement/Sprite2D/Movement" to="." method="_on_movement_mouse_entered"]
+[connection signal="mouse_exited" from="Movement/Sprite2D/Movement" to="." method="_on_movement_mouse_exited"]
