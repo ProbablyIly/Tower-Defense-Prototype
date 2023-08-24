@@ -10,7 +10,7 @@ var selected = false
 
 @onready var sprite =  $Sprite
 
-@onready var gizmo = $Node2D
+@onready var gizmo = $Gizmo
 
 
 var creationTime: float = 0
@@ -51,7 +51,6 @@ func _process(delta):
 	else:
 		selected = false
 			
-		
 	if selected == true:
 		gizmo.visible = true
 	elif selected == false:
