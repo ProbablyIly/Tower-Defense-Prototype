@@ -6,7 +6,7 @@ extends StaticBody2D
 @onready var colour = modulate
 @onready var mouse = false
 
-@onready var sprite =  $AnimatedSprite2D
+@onready var sprite =  $Sprite
 
 var creationTime: float = 0
 var minutes = 0

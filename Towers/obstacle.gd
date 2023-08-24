@@ -8,7 +8,7 @@ extends StaticBody2D
 
 var selected = false
 
-@onready var sprite =  $Sprite2D
+@onready var sprite =  $Sprite
 
 @onready var gizmo = $Node2D
 

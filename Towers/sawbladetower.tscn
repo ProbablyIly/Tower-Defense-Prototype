@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://kj878lidp3g6"]
+[gd_scene load_steps=132 format=3 uid="uid://kj878lidp3g6"]
 
 [ext_resource type="Script" path="res://Towers/tower.gd" id="1_k2djh"]
 [ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Towers/Outline.tres" id="2_0f872"]
@@ -122,6 +122,7 @@
 [ext_resource type="Texture2D" uid="uid://d08rvii2pcgkr" path="res://Assets/SawTowerTop/0118.png" id="120_dnpv6"]
 [ext_resource type="Texture2D" uid="uid://4m140k5ae23t" path="res://Assets/SawTowerTop/0119.png" id="121_ytgkx"]
 [ext_resource type="Texture2D" uid="uid://bx1iu7w70r33i" path="res://Assets/SawTowerTop/0120.png" id="122_p2xus"]
+[ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://UI/RotationTool.tscn" id="123_jf73r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iopr"]
 radius = 11.0255
@@ -568,13 +569,13 @@ max_value = 120.0
 value = 120.0
 show_percentage = false
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_0f872")
 rotation = -1.309
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_mm34s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "spin"
 speed_scale = 30.0
 libraries = {
@@ -586,6 +587,8 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 shape = SubResource("CircleShape2D_061ck")
+
+[node name="Node2D" parent="." instance=ExtResource("123_jf73r")]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

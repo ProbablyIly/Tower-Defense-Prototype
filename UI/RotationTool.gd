@@ -1,8 +1,13 @@
 extends Node2D
 
 @onready var mid = $Middle #Marker2D
+@onready var mov = $Movement
+@onready var rot_g = $Middle/Sprite2D
+@onready var mov_g = $Movement/Sprite2D
 @onready var controller = $Middle/Sprite2D
 @onready var parent = $".."
+@onready var sprite = $"../Sprite"
+@onready var animplay = $"../Sprite/AnimationPlayer"
 
 var rad = 150
 var angle = 0.0
@@ -13,6 +18,16 @@ var last
 var mouse_move
 
 func _ready():
+	if sprite is Sprite2D:
+		rad = sprite.texture.get_width() * 0.11
+		rot_g.scale = sprite.texture.get_width() * 0.0008 * rot_g.scale
+		mov_g.scale = sprite.texture.get_width() * 0.0008 * mov_g.scale
+	if sprite is AnimatedSprite2D:
+		var tex = sprite.sprite_frames.get_frame_texture("default",0)
+		rad = tex.get_width() * 0.11
+		rot_g.scale = tex.get_width() * 0.001 * rot_g.scale
+		mov_g.scale = tex.get_width() * 0.001 * mov_g.scale
+	
 	controller.position = mid.position + Vector2(rad, 0)
 
 func _process(delta):

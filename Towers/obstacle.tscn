@@ -45,7 +45,7 @@ max_value = 90.0
 value = 90.0
 show_percentage = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("2_4eg1o")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_yrejs")
