@@ -1,19 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccrk2sk0gy4"]
+[gd_scene load_steps=8 format=3 uid="uid://ccrk2sk0gy4"]
 
 [ext_resource type="Script" path="res://Towers/obstacle.gd" id="1_13bfh"]
 [ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Towers/Outline.tres" id="2_4eg1o"]
 [ext_resource type="Texture2D" uid="uid://ykuesallfge6" path="res://Assets/Barricade/BarricadeTop.png" id="3_yrejs"]
 [ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://UI/RotationTool.tscn" id="4_ghylv"]
+[ext_resource type="PackedScene" uid="uid://dykcaq78fvygm" path="res://health_bar.tscn" id="5_52dmm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pchk5"]
 radius = 9.33334
 height = 80.6666
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewc0c"]
-bg_color = Color(0.32549, 0.32549, 0.32549, 0.415686)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dc21q"]
-bg_color = Color(0.415686, 0.627451, 0.396078, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bu131"]
 radius = 28.0
@@ -34,17 +29,6 @@ scale = Vector2(20.883, -7.245)
 color = Color(0.345098, 0.694118, 0.721569, 1)
 polygon = PackedVector2Array(0, -10, 7, -7, 10, 0, 7, 7, 0, 10, -7, 7, -10, 0, -7, -7)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -32.0
-offset_top = -48.0
-offset_right = 33.0
-offset_bottom = -38.0
-theme_override_styles/background = SubResource("StyleBoxFlat_ewc0c")
-theme_override_styles/fill = SubResource("StyleBoxFlat_dc21q")
-max_value = 90.0
-value = 90.0
-show_percentage = false
-
 [node name="Sprite" type="Sprite2D" parent="."]
 material = ExtResource("2_4eg1o")
 scale = Vector2(0.2, 0.2)
@@ -59,6 +43,8 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_bu131")
 
 [node name="Gizmo" parent="." instance=ExtResource("4_ghylv")]
+
+[node name="HealthBar" parent="." instance=ExtResource("5_52dmm")]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

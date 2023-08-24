@@ -7,7 +7,6 @@ extends Node2D
 @onready var controller = $Middle/Sprite2D
 @onready var parent = $".."
 @onready var sprite = $"../Sprite"
-@onready var animplay = $"../Sprite/AnimationPlayer"
 
 var rad = 150
 var angle = 0.0
@@ -20,13 +19,13 @@ var mouse_move
 func _ready():
 	if sprite is Sprite2D:
 		rad = sprite.texture.get_width() * 0.11
-		rot_g.scale = sprite.texture.get_width() * 0.0008 * rot_g.scale
-		mov_g.scale = sprite.texture.get_width() * 0.0008 * mov_g.scale
+		rot_g.scale = sprite.scale * rot_g.scale * 5
+		mov_g.scale = sprite.scale * mov_g.scale * 5
 	if sprite is AnimatedSprite2D:
 		var tex = sprite.sprite_frames.get_frame_texture("default",0)
 		rad = tex.get_width() * 0.11
-		rot_g.scale = tex.get_width() * 0.001 * rot_g.scale
-		mov_g.scale = tex.get_width() * 0.001 * mov_g.scale
+		rot_g.scale = sprite.scale * rot_g.scale * 3.5
+		mov_g.scale = sprite.scale * mov_g.scale * 3.5
 	
 	controller.position = mid.position + Vector2(rad, 0)
 
@@ -61,8 +60,6 @@ func _process(delta):
 		visible = true
 	else:
 		visible = false
-		
-
 
 func _draw():
 	draw_arc(mid.position, rad, 0, 360, 64, Color.WHITE)

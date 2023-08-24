@@ -1,10 +1,12 @@
 extends StaticBody2D
 
-@onready var hp = $ProgressBar
+@onready var hp = $HealthBar/ProgressBar
 @onready var placed = false
 @onready var group = "tower"
 @onready var colour = modulate
 @onready var mouse = false
+
+var hp_val = 180
 
 
 @onready var sprite =  $Sprite

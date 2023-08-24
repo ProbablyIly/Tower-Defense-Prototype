@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://kj878lidp3g6"]
+[gd_scene load_steps=131 format=3 uid="uid://kj878lidp3g6"]
 
 [ext_resource type="Script" path="res://Towers/tower.gd" id="1_k2djh"]
 [ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Towers/Outline.tres" id="2_0f872"]
@@ -123,15 +123,10 @@
 [ext_resource type="Texture2D" uid="uid://4m140k5ae23t" path="res://Assets/SawTowerTop/0119.png" id="121_ytgkx"]
 [ext_resource type="Texture2D" uid="uid://bx1iu7w70r33i" path="res://Assets/SawTowerTop/0120.png" id="122_p2xus"]
 [ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://UI/RotationTool.tscn" id="123_jf73r"]
+[ext_resource type="PackedScene" uid="uid://dykcaq78fvygm" path="res://health_bar.tscn" id="124_j0e4u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iopr"]
 radius = 11.0255
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbfxc"]
-bg_color = Color(0.32549, 0.32549, 0.32549, 0.415686)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hjiu"]
-bg_color = Color(0.415686, 0.627451, 0.396078, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mm34s"]
 animations = [{
@@ -558,17 +553,6 @@ scale = Vector2(3, 3)
 color = Color(0.737255, 0.541176, 0.843137, 1)
 polygon = PackedVector2Array(0, -10, 7, -7, 10, 0, 7, 7, 0, 10, -7, 7, -10, 0, -7, -7)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -32.5
-offset_top = -65.5
-offset_right = 32.5
-offset_bottom = -55.5
-theme_override_styles/background = SubResource("StyleBoxFlat_gbfxc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_4hjiu")
-max_value = 120.0
-value = 120.0
-show_percentage = false
-
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_0f872")
 rotation = -1.309
@@ -589,6 +573,8 @@ visible = false
 shape = SubResource("CircleShape2D_061ck")
 
 [node name="Gizmo" parent="." instance=ExtResource("123_jf73r")]
+
+[node name="HealthBar" parent="." instance=ExtResource("124_j0e4u")]
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

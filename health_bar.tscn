@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dykcaq78fvygm"]
+
+[ext_resource type="Script" path="res://HealthBar.gd" id="1_8t0iq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvs2i"]
+bg_color = Color(0.32549, 0.32549, 0.32549, 0.415686)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ccv2r"]
+bg_color = Color(0.415686, 0.627451, 0.396078, 1)
+
+[node name="HealthBar" type="CanvasLayer"]
+script = ExtResource("1_8t0iq")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -65.0
+offset_bottom = 5.0
+scale = Vector2(2, 2)
+theme_override_styles/background = SubResource("StyleBoxFlat_uvs2i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ccv2r")
+max_value = 120.0
+value = 120.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_top = -1.0
+offset_right = 184.5
+offset_bottom = 25.0
+scale = Vector2(0.3, 0.3)
+horizontal_alignment = 1
+
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]
