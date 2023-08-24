@@ -6,11 +6,8 @@ extends StaticBody2D
 @onready var colour = modulate
 @onready var mouse = false
 
-var selected = false
 
 @onready var sprite =  $Sprite
-
-@onready var gizmo = $Gizmo
 
 
 var creationTime: float = 0
@@ -22,7 +19,6 @@ var mins = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	creationTime = Time.get_ticks_msec() / 1000.0
-	gizmo.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -45,16 +41,6 @@ func _process(delta):
 				node.sprite.material.set_shader_parameter("apply_outline", 0)
 				node.sprite.material.set_shader_parameter("width", 12)
 				
-				
-	if is_in_group("selection"):
-		selected = true
-	else:
-		selected = false
-			
-	if selected == true:
-		gizmo.visible = true
-	elif selected == false:
-		gizmo.visible = false
 
 
 func take_damage(dmg):

@@ -56,6 +56,12 @@ func _process(delta):
 		parent.rotation = angle
 	if last == "move":
 		parent.position = mouse_move
+		
+	if parent.is_in_group("selection"):
+		visible = true
+	else:
+		visible = false
+		
 
 
 func _draw():

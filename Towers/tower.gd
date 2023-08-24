@@ -7,9 +7,6 @@ extends StaticBody2D
 @onready var mouse = false
 
 @onready var sprite =  $Sprite
-@onready var gizmo = $Gizmo
-
-var selected = false
 
 var creationTime: float = 0
 var minutes = 0
@@ -41,16 +38,6 @@ func _process(delta):
 				node.sprite.material.set_shader_parameter("apply_outline", 0)
 				node.sprite.material.set_shader_parameter("width", 6)
 				
-					
-	if is_in_group("selection"):
-		selected = true
-	else:
-		selected = false
-			
-	if selected == true:
-		gizmo.visible = true
-	elif selected == false:
-		gizmo.visible = false
 
 func take_damage(dmg):
 	if placed:
