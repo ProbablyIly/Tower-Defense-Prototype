@@ -5,6 +5,7 @@ extends StaticBody2D
 @onready var group = "tower"
 @onready var colour = modulate
 @onready var mouse = false
+@onready var gizmo = $Gizmo
 
 var hp_val = 180
 
@@ -26,22 +27,29 @@ func _ready():
 func _process(delta):
 	if hp.value < 1:
 		queue_free()
+		
+	
 
-	if mouse and Input.is_action_just_pressed("lmb"):
-		for node in get_tree().get_nodes_in_group("selectable"):
-			node.remove_from_group("selection")
+	if mouse and not gizmo.move and Input.is_action_just_pressed("lmb"):
+		if self.is_in_group("selection"):
+			self.remove_from_group("selection")
+			self.sprite.material.set_shader_parameter("apply_outline", 0)
+			self.sprite.material.set_shader_parameter("width", 12)
+		else:
+			for node in get_tree().get_nodes_in_group("selectable"):
+				node.remove_from_group("selection")
 				
-		add_to_group("selection")
+			add_to_group("selection")
 			
-		for node in get_tree().get_nodes_in_group("selectable"):
-			if node.is_in_group("selection"):
-				node.sprite.material.set_shader_parameter("apply_outline", 1)
-				node.sprite.material.set_shader_parameter("width", 12)
-				global.CurrentSelection = node
+			for node in get_tree().get_nodes_in_group("selectable"):
+				if node.is_in_group("selection"):
+					node.sprite.material.set_shader_parameter("apply_outline", 1)
+					node.sprite.material.set_shader_parameter("width", 12)
+					global.CurrentSelection = node
 				
-			else:
-				node.sprite.material.set_shader_parameter("apply_outline", 0)
-				node.sprite.material.set_shader_parameter("width", 12)
+				else:
+					node.sprite.material.set_shader_parameter("apply_outline", 0)
+					node.sprite.material.set_shader_parameter("width", 12)
 				
 
 
