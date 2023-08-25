@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ccy4uqqmuum3u" path="res://UI/UI.tscn" id="5_nv715"]
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2(1.667, 1.667)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
