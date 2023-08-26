@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccy4uqqmuum3u"]
+[gd_scene load_steps=9 format=3 uid="uid://ccy4uqqmuum3u"]
 
 [ext_resource type="Script" path="res://UI/Sidebar.gd" id="1_u8r1p"]
+[ext_resource type="Script" path="res://UI/Editor.gd" id="2_8makj"]
 [ext_resource type="Script" path="res://UI/Shop.gd" id="2_e2rvp"]
 [ext_resource type="PackedScene" uid="uid://dxbg2v4enxere" path="res://Towers/Icons/towericon.tscn" id="3_ef7b5"]
 [ext_resource type="Texture2D" uid="uid://ktr5tafdr0cf" path="res://Assets/Barricade/Barricade.png" id="4_r6ywg"]
@@ -142,6 +143,7 @@ horizontal_alignment = 1
 
 [node name="Editor" type="VBoxContainer" parent="Sidebar"]
 layout_mode = 2
+script = ExtResource("2_8makj")
 
 [node name="Label" type="Label" parent="Sidebar/Editor"]
 layout_mode = 2
@@ -179,10 +181,10 @@ text = "Range"
 
 [node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/RangeContainer"]
 layout_mode = 2
-min_value = 1.0
-value = 1.0
+value = 10.0
 alignment = 1
 update_on_text_changed = true
+select_all_on_focus = true
 
 [node name="HealthContainer" type="HBoxContainer" parent="Sidebar/Editor"]
 layout_mode = 2

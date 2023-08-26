@@ -1,6 +1,6 @@
-[gd_scene load_steps=131 format=3 uid="uid://kj878lidp3g6"]
+[gd_scene load_steps=132 format=3 uid="uid://kj878lidp3g6"]
 
-[ext_resource type="Script" path="res://Towers/tower.gd" id="1_k2djh"]
+[ext_resource type="Script" path="res://Towers/sawblade.gd" id="1_h3s57"]
 [ext_resource type="Material" uid="uid://bhtbi4ur72qjc" path="res://Towers/Outline.tres" id="2_0f872"]
 [ext_resource type="Texture2D" uid="uid://tnkjm5vy1iro" path="res://Assets/SawTowerTop/0001.png" id="3_ud1e6"]
 [ext_resource type="Texture2D" uid="uid://cgkltbtdsl1oc" path="res://Assets/SawTowerTop/0002.png" id="4_hb54b"]
@@ -124,6 +124,7 @@
 [ext_resource type="Texture2D" uid="uid://bx1iu7w70r33i" path="res://Assets/SawTowerTop/0120.png" id="122_p2xus"]
 [ext_resource type="PackedScene" uid="uid://d3q6y1wrryui0" path="res://UI/RotationTool.tscn" id="123_jf73r"]
 [ext_resource type="PackedScene" uid="uid://dykcaq78fvygm" path="res://health_bar.tscn" id="124_j0e4u"]
+[ext_resource type="PackedScene" uid="uid://mxyo75ic7hs3" path="res://UI/range.tscn" id="125_cfjfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2iopr"]
 radius = 11.0255
@@ -538,9 +539,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_061ck"]
 radius = 47.5946
 
-[node name="Tower" type="StaticBody2D" groups=["selectable"]]
+[node name="SawbladeTower" type="StaticBody2D" groups=["selectable"]]
 scale = Vector2(2, 2)
-script = ExtResource("1_k2djh")
+script = ExtResource("1_h3s57")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9.53674e-07, -0.25)
@@ -552,6 +553,8 @@ visible = false
 scale = Vector2(3, 3)
 color = Color(0.737255, 0.541176, 0.843137, 1)
 polygon = PackedVector2Array(0, -10, 7, -7, 10, 0, 7, 7, 0, 10, -7, 7, -10, 0, -7, -7)
+
+[node name="Range" parent="." instance=ExtResource("125_cfjfq")]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_0f872")

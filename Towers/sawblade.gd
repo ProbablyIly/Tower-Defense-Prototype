@@ -9,11 +9,12 @@ extends StaticBody2D
 @onready var sprite =  $Sprite
 
 
-var damage
-var range
-@export var hp_val = 90
+@export var damage = 6
+@export var range = 100
+@export var hp_val = 30
 @export var cooldown = 5
 @export var charge = 12
+
 
 var creationTime: float = 0
 var minutes = 0
@@ -29,6 +30,10 @@ func _process(delta):
 	if hp.value < 1:
 		queue_free()
 		
+	check_selection()
+		
+	
+func check_selection():
 	if mouse and not gizmo.move and Input.is_action_just_pressed("lmb"):
 		if self.is_in_group("selection"):
 			self.remove_from_group("selection")
@@ -49,7 +54,9 @@ func _process(delta):
 				else:
 					node.sprite.material.set_shader_parameter("apply_outline", 0)
 					node.sprite.material.set_shader_parameter("width", 6)
-				
+					
+			queue_redraw()
+	
 
 func take_damage(dmg):
 	if placed:
