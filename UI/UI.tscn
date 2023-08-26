@@ -179,7 +179,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Range"
 
-[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/RangeContainer"]
+[node name="RangeBox" type="SpinBox" parent="Sidebar/Editor/RangeContainer"]
 layout_mode = 2
 value = 10.0
 alignment = 1
@@ -295,6 +295,8 @@ text = "                 "
 position = Vector2(40, 49)
 scale = Vector2(0.8, 0.8)
 
+[connection signal="value_changed" from="Sidebar/Editor/RangeContainer/RangeBox" to="Sidebar/Editor" method="_on_range_box_value_changed"]
+[connection signal="pressed" from="Sidebar/Editor/HBoxContainer/Button" to="Sidebar/Editor" method="_on_button_pressed"]
 [connection signal="pressed" from="Sidebar/Outliner/Enemy" to="Shop" method="_on_enemy_pressed"]
 [connection signal="pressed" from="Shop/TowerButton" to="Shop" method="_on_tower_button_pressed"]
 [connection signal="pressed" from="Shop/BarricadeButton" to="Shop" method="_on_barricade_button_pressed"]
