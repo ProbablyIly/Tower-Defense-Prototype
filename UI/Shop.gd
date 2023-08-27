@@ -41,7 +41,7 @@ func _on_tower_button_pressed():
 
 func _on_enemy_pressed():
 	var enemy_instance = enemy_scene.instantiate()
-	enemy_instance.position = Vector2(1200, 500)
+	enemy_instance.position = Vector2(1920, 540)
 	get_tree().get_root().add_child(enemy_instance)
 
 

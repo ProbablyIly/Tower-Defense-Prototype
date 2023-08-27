@@ -72,12 +72,12 @@ size_flags_vertical = 0
 [node name="Label" type="Label" parent="Sidebar/Inspector/DPSContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Damage/s"
+text = "Damage"
 
-[node name="SpinBox" type="Label" parent="Sidebar/Inspector/DPSContainer"]
+[node name="DPSBox" type="Label" parent="Sidebar/Inspector/DPSContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Null"
+text = "null"
 horizontal_alignment = 1
 
 [node name="KilledContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
@@ -89,10 +89,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Killed"
 
-[node name="SpinBox" type="Label" parent="Sidebar/Inspector/KilledContainer"]
+[node name="KilledBox" type="Label" parent="Sidebar/Inspector/KilledContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Null"
+text = "null"
 horizontal_alignment = 1
 
 [node name="HealthContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
@@ -107,7 +107,7 @@ text = "Health"
 [node name="HealthBox" type="Label" parent="Sidebar/Inspector/HealthContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Null"
+text = "null"
 horizontal_alignment = 1
 
 [node name="CooldownContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
@@ -119,10 +119,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Cooldown"
 
-[node name="SpinBox" type="Label" parent="Sidebar/Inspector/CooldownContainer"]
+[node name="CoolBox" type="Label" parent="Sidebar/Inspector/CooldownContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Null"
+text = "null"
 horizontal_alignment = 1
 
 [node name="TimeContainer" type="HBoxContainer" parent="Sidebar/Inspector"]
@@ -138,7 +138,7 @@ text = "Time
 [node name="TimeBox" type="Label" parent="Sidebar/Inspector/TimeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Null"
+text = "null"
 horizontal_alignment = 1
 
 [node name="Editor" type="VBoxContainer" parent="Sidebar"]

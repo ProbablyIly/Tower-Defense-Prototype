@@ -10,10 +10,11 @@ extends StaticBody2D
 @onready var sprite =  $Sprite
 
 
+var killed
 var damage
 var range
+var cooldown
 @export var hp_val = 90
-@export var cooldown = 5
 @export var charge = 12
 
 var creationTime: float = 0

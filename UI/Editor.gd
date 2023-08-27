@@ -85,6 +85,8 @@ func editor_update():
 
 func _on_button_pressed():
 	apply = true
+	if global.CurrentSelection.cooldown != null:
+		global.CurrentSelection.timer.wait_time = coolbox.value
 	
 func _on_damage_box_value_changed(value):
 	global.CurrentSelection.damage = damagebox.value 
@@ -98,6 +100,7 @@ func _on_healthbox_value_changed(value):
 
 func _on_cooldown_box_value_changed(value):
 	global.CurrentSelection.cooldown = coolbox.value
+
 
 func _on_charge_box_value_changed(value):
 	global.CurrentSelection.charge = chargebox.value

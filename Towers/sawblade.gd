@@ -8,8 +8,10 @@ extends StaticBody2D
 @onready var mouse = false
 @onready var gizmo = $Gizmo
 @onready var sprite =  $Sprite
+@onready var timer = $Timer
 
 
+var killed = 0
 @export var damage = 5
 @export var range = 100
 @export var hp_val = 30
@@ -26,6 +28,7 @@ var mins = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	creationTime = Time.get_ticks_msec() / 1000.0
+	timer.wait_time = cooldown
 
 func _process(delta):
 	if hp.value < 1:
@@ -69,4 +72,6 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	mouse = false
 		
-		
+
+func _on_timer_timeout():
+	pass # Replace with function body.

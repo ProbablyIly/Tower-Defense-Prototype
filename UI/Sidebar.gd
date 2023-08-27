@@ -15,6 +15,22 @@ func _input(event):
 
 func _update_sidebar():
 	if global.CurrentSelection != null:
+		
+		if global.CurrentSelection.damage != null: 
+			$Inspector/DPSContainer/DPSBox.text = str(snapped(global.CurrentSelection.damage/global.CurrentSelection.cooldown, 0.01)) + "/s"
+		else:
+			$Inspector/DPSContainer/DPSBox.text = "null"
+		
+		if global.CurrentSelection.killed != null: 
+			$Inspector/KilledContainer/KilledBox.text = str(global.CurrentSelection.killed)
+		else:
+			$Inspector/KilledContainer/KilledBox.text = "null"
+		
+		if global.CurrentSelection.cooldown != null: 
+			$Inspector/CooldownContainer/CoolBox.text = str(snapped(global.CurrentSelection.timer.time_left, 0.1)) + "s"
+		else:
+			$Inspector/CooldownContainer/CoolBox.text = "null"
+		
 		$Inspector/HealthContainer/HealthBox.text = str(global.CurrentSelection.hp.value) + "/" + str(global.CurrentSelection.hp.max_value)
 		
 		var current_time = Time.get_ticks_msec() / 1000.0
