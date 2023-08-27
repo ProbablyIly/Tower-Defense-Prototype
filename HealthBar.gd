@@ -9,9 +9,7 @@ var off = Vector2(-65, -100)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hp.max_value = parent.hp_val
-	hp.value = hp.max_value
-
+	initialize_hp()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,3 +17,9 @@ func _process(delta):
 
 func _on_progress_bar_value_changed(value):
 	label.text = str(hp.value) + "/" + str(hp.max_value)
+
+func initialize_hp():
+	hp.max_value = parent.hp_val
+	hp.value = hp.max_value
+
+	

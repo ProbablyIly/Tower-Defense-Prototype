@@ -163,7 +163,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Damage"
 
-[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/DamageContainer"]
+[node name="DamageBox" type="SpinBox" parent="Sidebar/Editor/DamageContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 1.0
@@ -195,7 +195,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Health"
 
-[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/HealthContainer"]
+[node name="Healthbox" type="SpinBox" parent="Sidebar/Editor/HealthContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 1.0
@@ -211,12 +211,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Cooldown"
 
-[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/CooldownContainer"]
+[node name="CooldownBox" type="SpinBox" parent="Sidebar/Editor/CooldownContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 1.0
 alignment = 1
 update_on_text_changed = true
+suffix = "s"
 
 [node name="ChargeContainer" type="HBoxContainer" parent="Sidebar/Editor"]
 layout_mode = 2
@@ -228,7 +229,7 @@ size_flags_horizontal = 3
 text = "Charge
 "
 
-[node name="SpinBox" type="SpinBox" parent="Sidebar/Editor/ChargeContainer"]
+[node name="ChargeBox" type="SpinBox" parent="Sidebar/Editor/ChargeContainer"]
 layout_mode = 2
 min_value = 1.0
 value = 1.0
@@ -295,7 +296,11 @@ text = "                 "
 position = Vector2(40, 49)
 scale = Vector2(0.8, 0.8)
 
+[connection signal="value_changed" from="Sidebar/Editor/DamageContainer/DamageBox" to="Sidebar/Editor" method="_on_damage_box_value_changed"]
 [connection signal="value_changed" from="Sidebar/Editor/RangeContainer/RangeBox" to="Sidebar/Editor" method="_on_range_box_value_changed"]
+[connection signal="value_changed" from="Sidebar/Editor/HealthContainer/Healthbox" to="Sidebar/Editor" method="_on_healthbox_value_changed"]
+[connection signal="value_changed" from="Sidebar/Editor/CooldownContainer/CooldownBox" to="Sidebar/Editor" method="_on_cooldown_box_value_changed"]
+[connection signal="value_changed" from="Sidebar/Editor/ChargeContainer/ChargeBox" to="Sidebar/Editor" method="_on_charge_box_value_changed"]
 [connection signal="pressed" from="Sidebar/Editor/HBoxContainer/Button" to="Sidebar/Editor" method="_on_button_pressed"]
 [connection signal="pressed" from="Sidebar/Outliner/Enemy" to="Shop" method="_on_enemy_pressed"]
 [connection signal="pressed" from="Shop/TowerButton" to="Shop" method="_on_tower_button_pressed"]
