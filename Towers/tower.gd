@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @onready var hp = $HealthBar/ProgressBar
+@onready var hp_scene = $HealthBar
 @onready var placed = false
 @onready var group = "tower"
 @onready var colour = modulate

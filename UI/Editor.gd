@@ -19,6 +19,12 @@ var old_charge
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	LastSelection = global.CurrentSelection
+	$RangeContainer.visible = false
+	$DamageContainer.visible = false
+	$HealthContainer.visible = false
+	$CooldownContainer.visible = false
+	$ChargeContainer.visible = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,11 +41,36 @@ func _process(delta):
 
 	
 func editor_update():
-	rangebox.value = global.CurrentSelection.range / 10
-	damagebox.value = global.CurrentSelection.damage
-	healthbox.value = global.CurrentSelection.hp_val / 10
-	coolbox.value = global.CurrentSelection.cooldown
-	chargebox.value = global.CurrentSelection.charge
+	if global.CurrentSelection.range != null:
+		$RangeContainer.visible = true
+		rangebox.value = global.CurrentSelection.range / 10
+	else:
+		$RangeContainer.visible = false
+	
+	if global.CurrentSelection.damage != null:
+		$DamageContainer.visible = true
+		damagebox.value = global.CurrentSelection.damage
+	else:
+		$DamageContainer.visible = false
+		
+	if global.CurrentSelection.hp_val != null:
+		$HealthContainer.visible = true
+		healthbox.value = global.CurrentSelection.hp_val / 10
+	else:
+		$HealthContainer.visible = false
+	
+	if global.CurrentSelection.cooldown != null:
+		$CooldownContainer.visible = true
+		coolbox.value = global.CurrentSelection.cooldown
+	else:
+		$CooldownContainer.visible = false
+		
+	if global.CurrentSelection.charge != null:
+		$ChargeContainer.visible = true
+		chargebox.value = global.CurrentSelection.charge
+	else:
+		$ChargeContainer.visible = false
+	
 	if LastSelection != null:
 		if apply == false:
 			LastSelection.range = old_range

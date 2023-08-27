@@ -1,13 +1,21 @@
 extends StaticBody2D
 
 @onready var hp = $HealthBar/ProgressBar
+@onready var hp_scene = $HealthBar
 @onready var placed = false
 @onready var group = "tower"
 @onready var colour = modulate
 @onready var mouse = false
 @onready var gizmo = $Gizmo
 
+var damage
+var range
 var hp_val = 180
+var cooldown
+var charge
+
+
+
 
 
 @onready var sprite =  $Sprite
