@@ -15,7 +15,7 @@ var damage
 var range
 var cooldown
 @export var hp_val = 90
-@export var charge = 12
+var charge
 
 var creationTime: float = 0
 var minutes = 0
