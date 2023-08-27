@@ -31,45 +31,56 @@ func _process(delta):
 	if global.CurrentSelection != LastSelection:
 		editor_update()
 		
-		old_dmg = global.CurrentSelection.damage
-		old_range = global.CurrentSelection.range
-		old_hp = global.CurrentSelection.hp_val
-		old_cooldown = global.CurrentSelection.cooldown
-		old_charge = global.CurrentSelection.charge
-		
+		if global.CurrentSelection != null:
+			old_dmg = global.CurrentSelection.damage
+			old_range = global.CurrentSelection.range
+			old_hp = global.CurrentSelection.hp_val
+			old_cooldown = global.CurrentSelection.cooldown
+			old_charge = global.CurrentSelection.charge
+			
 		LastSelection = global.CurrentSelection
+			
+		if global.CurrentSelection == null:
+			$RangeContainer.visible = false
+			$DamageContainer.visible = false
+			$HealthContainer.visible = false
+			$CooldownContainer.visible = false
+			$ChargeContainer.visible = false
 
 	
 func editor_update():
-	if global.CurrentSelection.range != null:
-		$RangeContainer.visible = true
-		rangebox.value = global.CurrentSelection.range / 10
-	else:
-		$RangeContainer.visible = false
+	if global.CurrentSelection != null:
+		if global.CurrentSelection.range != null:
+			$RangeContainer.visible = true
+			rangebox.value = global.CurrentSelection.range / 10
+		else:
+			$RangeContainer.visible = false
 	
-	if global.CurrentSelection.damage != null:
-		$DamageContainer.visible = true
-		damagebox.value = global.CurrentSelection.damage
-	else:
-		$DamageContainer.visible = false
+		if global.CurrentSelection.damage != null:
+			$DamageContainer.visible = true
+			damagebox.value = global.CurrentSelection.damage
+		else:
+			$DamageContainer.visible = false
 		
-	if global.CurrentSelection.hp_val != null:
-		$HealthContainer.visible = true
-		healthbox.value = global.CurrentSelection.hp_val / 10
-	else:
-		$HealthContainer.visible = false
+		if global.CurrentSelection.hp_val != null:
+			$HealthContainer.visible = true
+			healthbox.value = global.CurrentSelection.hp_val / 10
+		else:
+			$HealthContainer.visible = false
 	
-	if global.CurrentSelection.cooldown != null:
-		$CooldownContainer.visible = true
-		coolbox.value = global.CurrentSelection.cooldown
-	else:
-		$CooldownContainer.visible = false
+		if global.CurrentSelection.cooldown != null:
+			$CooldownContainer.visible = true
+			coolbox.value = global.CurrentSelection.cooldown
+		else:
+			$CooldownContainer.visible = false
 		
-	if global.CurrentSelection.charge != null:
-		$ChargeContainer.visible = true
-		chargebox.value = global.CurrentSelection.charge
-	else:
-		$ChargeContainer.visible = false
+		if global.CurrentSelection.charge != null:
+			$ChargeContainer.visible = true
+			chargebox.value = global.CurrentSelection.charge
+		else:
+			$ChargeContainer.visible = false
+			
+	
 	
 	if LastSelection != null:
 		if apply == false:

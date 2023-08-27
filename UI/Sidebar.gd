@@ -43,3 +43,10 @@ func _update_sidebar():
 			global.CurrentSelection.hours += 1
 		
 		$Inspector/TimeContainer/TimeBox.text = str(seconds) + "s " + str(global.CurrentSelection.minutes) + "m " + str(global.CurrentSelection.hours) + "h"
+	if global.CurrentSelection == null:
+		$Inspector/DPSContainer/DPSBox.text = "null"
+		$Inspector/KilledContainer/KilledBox.text = "null"
+		$Inspector/CooldownContainer/CoolBox.text = "null"
+		$Inspector/HealthContainer/HealthBox.text = "null"
+		$Inspector/TimeContainer/TimeBox.text = "null"
+		

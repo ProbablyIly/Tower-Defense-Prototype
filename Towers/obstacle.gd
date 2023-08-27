@@ -16,10 +16,6 @@ var hp_val = 180
 var cooldown
 var charge
 
-
-
-
-
 @onready var sprite =  $Sprite
 
 
@@ -45,6 +41,7 @@ func _process(delta):
 			self.remove_from_group("selection")
 			self.sprite.material.set_shader_parameter("apply_outline", 0)
 			self.sprite.material.set_shader_parameter("width", 12)
+			global.CurrentSelection = null
 		else:
 			for node in get_tree().get_nodes_in_group("selectable"):
 				node.remove_from_group("selection")
