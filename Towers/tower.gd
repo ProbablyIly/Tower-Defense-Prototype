@@ -28,8 +28,6 @@ func _ready():
 	creationTime = Time.get_ticks_msec() / 1000.0
 
 func _process(delta):
-	if hp.value < 1:
-		queue_free()
 		
 	if mouse and not gizmo.move and Input.is_action_just_pressed("lmb"):
 		if self.is_in_group("selection"):
@@ -57,6 +55,8 @@ func _process(delta):
 func take_damage(dmg):
 	if placed:
 		hp.value -= dmg
+		if hp.value < 1:
+			queue_free()
 
 func _on_area_2d_mouse_entered():
 	mouse = true

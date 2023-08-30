@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccy4uqqmuum3u"]
+[gd_scene load_steps=10 format=3 uid="uid://ccy4uqqmuum3u"]
 
 [ext_resource type="Script" path="res://UI/Sidebar.gd" id="1_u8r1p"]
 [ext_resource type="Script" path="res://UI/Editor.gd" id="2_8makj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dxbg2v4enxere" path="res://Towers/Icons/towericon.tscn" id="3_ef7b5"]
 [ext_resource type="Texture2D" uid="uid://ktr5tafdr0cf" path="res://Assets/Barricade/Barricade.png" id="4_r6ywg"]
 [ext_resource type="PackedScene" uid="uid://chrqx6on3cmkc" path="res://Towers/Icons/sawicon.tscn" id="5_t4ebf"]
+[ext_resource type="Script" path="res://UI/CurreencyValue.gd" id="7_h37x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5354"]
 size = Vector2(174, 648)
@@ -18,6 +19,9 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
+offset_right = -768.0
+offset_bottom = -434.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.667, 1.667)
@@ -263,7 +267,7 @@ text = "Summon Enemies"
 [node name="Shop" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 177.0
-offset_right = 919.0
+offset_right = 1121.0
 offset_bottom = 98.0
 script = ExtResource("2_e2rvp")
 
@@ -295,6 +299,17 @@ text = "                 "
 [node name="Tower2" parent="Shop/SawButton" instance=ExtResource("5_t4ebf")]
 position = Vector2(40, 49)
 scale = Vector2(0.8, 0.8)
+
+[node name="CurrencyName" type="Label" parent="Shop"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Moneyz: "
+
+[node name="CurreencyValue" type="Label" parent="Shop"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0"
+script = ExtResource("7_h37x7")
 
 [connection signal="value_changed" from="Sidebar/Editor/DamageContainer/DamageBox" to="Sidebar/Editor" method="_on_damage_box_value_changed"]
 [connection signal="value_changed" from="Sidebar/Editor/RangeContainer/RangeBox" to="Sidebar/Editor" method="_on_range_box_value_changed"]

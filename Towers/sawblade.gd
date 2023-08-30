@@ -31,8 +31,7 @@ func _ready():
 	timer.wait_time = cooldown
 
 func _process(delta):
-	if hp.value < 1:
-		queue_free()
+
 		
 	check_selection()
 		
@@ -66,6 +65,8 @@ func check_selection():
 func take_damage(dmg):
 	if placed:
 		hp.value -= dmg
+		if hp.value < 1:
+			queue_free()
 
 func _on_area_2d_mouse_entered():
 	mouse = true

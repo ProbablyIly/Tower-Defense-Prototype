@@ -31,10 +31,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if hp.value < 1:
-		queue_free()
-		
-	
 
 	if mouse and not gizmo.move and Input.is_action_just_pressed("lmb"):
 		if self.is_in_group("selection"):
@@ -58,10 +54,11 @@ func _process(delta):
 					node.sprite.material.set_shader_parameter("apply_outline", 0)
 					node.sprite.material.set_shader_parameter("width", 12)
 				
-
-
 func take_damage(dmg):
-	hp.value -= dmg
+	if placed:
+		hp.value -= dmg
+		if hp.value < 1:
+			queue_free()
 
 func _on_area_2d_mouse_entered():
 	mouse = true

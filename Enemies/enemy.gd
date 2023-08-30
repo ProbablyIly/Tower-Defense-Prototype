@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 var can_attack = false
 var detect_range = 100
 var attack_target
 @onready var current_target
+
+@onready var hp = $HealthBar/ProgressBar
+@onready var hp_scene = $HealthBar
+
+var hp_val = 30
 
 func _ready():
 	current_target = find()
@@ -55,3 +59,10 @@ func _on_attack_body_exited(body):
 	if body == attack_target:
 		can_attack = false
 		current_target = null
+		
+func take_damage(dmg):
+		hp.value -= dmg
+		if hp.value < 1:
+			queue_free()
+
+

@@ -1,22 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dykcaq78fvygm"]
+[gd_scene load_steps=4 format=3 uid="uid://cb153xbsva0ld"]
 
-[ext_resource type="Script" path="res://HealthBar.gd" id="1_8t0iq"]
+[ext_resource type="Script" path="res://HealthBar.gd" id="1_ft406"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvs2i"]
 bg_color = Color(0.32549, 0.32549, 0.32549, 0.415686)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ifa2"]
-bg_color = Color(0.294118, 0.827451, 0.45098, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4i304"]
+bg_color = Color(0.941176, 0.266667, 0.537255, 1)
 
 [node name="HealthBar" type="CanvasLayer"]
-script = ExtResource("1_8t0iq")
+script = ExtResource("1_ft406")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -65.0
+offset_left = -51.0
 offset_bottom = 5.0
 scale = Vector2(2, 2)
 theme_override_styles/background = SubResource("StyleBoxFlat_uvs2i")
-theme_override_styles/fill = SubResource("StyleBoxFlat_5ifa2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4i304")
 max_value = 120.0
 value = 120.0
 show_percentage = false
@@ -26,9 +26,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 offset_top = -1.0
-offset_right = 184.5
+offset_right = 144.5
 offset_bottom = 25.0
 scale = Vector2(0.3, 0.3)
+text = "asa"
 horizontal_alignment = 1
 
 [connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]

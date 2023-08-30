@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjalfdycvpln1"]
+[gd_scene load_steps=5 format=3 uid="uid://bjalfdycvpln1"]
 
 [ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_wo6jg"]
+[ext_resource type="PackedScene" uid="uid://cb153xbsva0ld" path="res://enemy_health.tscn" id="2_afdk2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7rcut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqn0l"]
 size = Vector2(138, 119)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_wo6jg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,6 +28,8 @@ shape = SubResource("RectangleShape2D_gqn0l")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="HealthBar" parent="." instance=ExtResource("2_afdk2")]
 
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
 [connection signal="body_exited" from="Attack" to="." method="_on_attack_body_exited"]

@@ -81,7 +81,6 @@ func editor_update():
 			$ChargeContainer.visible = false
 			
 	
-	
 	if LastSelection != null:
 		if apply == false:
 			LastSelection.range = old_range
@@ -92,7 +91,6 @@ func editor_update():
 			LastSelection.charge = old_charge
 			
 		apply = false
-
 
 func _on_button_pressed():
 	apply = true
@@ -111,7 +109,6 @@ func _on_healthbox_value_changed(value):
 
 func _on_cooldown_box_value_changed(value):
 	global.CurrentSelection.cooldown = coolbox.value
-
 
 func _on_charge_box_value_changed(value):
 	global.CurrentSelection.charge = chargebox.value
