@@ -33,6 +33,8 @@ var hp_mul = 10
 var cooldown_mul = 5
 var charge_mul
 
+var changed = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	LastSelection = global.CurrentSelection
@@ -41,13 +43,12 @@ func _ready():
 	$HealthContainer.visible = false
 	$CooldownContainer.visible = false
 	$ChargeContainer.visible = false
+	$HBoxContainer/Button.visible = false
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	
 func _process(delta):
+	editor_update()
 	if global.CurrentSelection != LastSelection:
-		editor_update()
-		
 		
 		if global.CurrentSelection != null:
 			if "damage" in global.CurrentSelection:
@@ -63,16 +64,13 @@ func _process(delta):
 			
 		LastSelection = global.CurrentSelection
 			
-		if global.CurrentSelection == null:
-			$RangeContainer.visible = false
-			$DamageContainer.visible = false
-			$HealthContainer.visible = false
-			$CooldownContainer.visible = false
-			$ChargeContainer.visible = false
-		
-	check_price()
+	
+	if changed:	
+		check_price()
+		changed = false
 
 func editor_update():
+	
 	if global.CurrentSelection != null:
 		if "range" in global.CurrentSelection:
 			$RangeContainer.visible = true
@@ -103,6 +101,19 @@ func editor_update():
 			chargebox.value = global.CurrentSelection.charge
 		else:
 			$ChargeContainer.visible = false
+			
+		if global.CurrentSelection != null:
+			$HBoxContainer/Button.visible = true
+		else:
+			$HBoxContainer/Button.visible = false
+		
+	elif global.CurrentSelection == null:
+			$RangeContainer.visible = false
+			$DamageContainer.visible = false
+			$HealthContainer.visible = false
+			$CooldownContainer.visible = false
+			$ChargeContainer.visible = false
+			$HBoxContainer/Button.visible = false
 			
 	
 	if LastSelection != null:
@@ -176,30 +187,36 @@ func check_price():
 		
 func _on_bought():
 	isbought = true
+	apply = true
+	changed = true
 
 func _on_button_pressed():
 	if price <= global.Currency:
 		global.Currency -= price
-		apply = true
 		bought.emit()
 		if "cooldown" in global.CurrentSelection:
 			global.CurrentSelection.timer.wait_time = coolbox.value / cooldown_mul
 	
 func _on_damage_box_value_changed(value):
 	global.CurrentSelection.damage = damagebox.value * dmg_mul
+	changed = true
 
 func _on_range_box_value_changed(value):
 	global.CurrentSelection.range = (rangebox.value+10) * range_mul
+	changed = true
 
 func _on_healthbox_value_changed(value):
 	global.CurrentSelection.hp_val = healthbox.value * hp_mul
 	global.CurrentSelection.hp_scene.initialize_hp()
+	changed = true
 
 func _on_cooldown_box_value_changed(value):
 	global.CurrentSelection.cooldown = coolbox.value / cooldown_mul
+	changed = true
 
 func _on_charge_box_value_changed(value):
 	global.CurrentSelection.charge = chargebox.value
+	changed = true
 	
 func fibonacci(n):
 	var negative = false

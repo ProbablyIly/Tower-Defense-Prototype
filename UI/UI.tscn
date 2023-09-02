@@ -320,6 +320,11 @@ offset_bottom = 110.0
 grow_horizontal = 0
 script = ExtResource("8_nhsar")
 
+[node name="Label" type="Label" parent="Debug Menu"]
+layout_mode = 2
+text = "Debug Menu"
+horizontal_alignment = 1
+
 [node name="Enemy" type="Button" parent="Debug Menu"]
 layout_mode = 2
 text = "Summon Enemies"
@@ -333,10 +338,16 @@ layout_mode = 2
 
 [node name="SpinBox" type="SpinBox" parent="Debug Menu/SplitContainer"]
 layout_mode = 2
+allow_greater = true
+allow_lesser = true
 
 [node name="Button" type="Button" parent="Debug Menu/SplitContainer"]
 layout_mode = 2
 text = "moneyz"
+
+[node name="FreeUpgrades" type="Button" parent="Debug Menu"]
+layout_mode = 2
+text = "Apply upgrades"
 
 [connection signal="bought" from="Sidebar/Editor" to="Sidebar/Editor" method="_on_bought"]
 [connection signal="value_changed" from="Sidebar/Editor/DamageContainer/DamageBox" to="Sidebar/Editor" method="_on_damage_box_value_changed"]
@@ -351,3 +362,4 @@ text = "moneyz"
 [connection signal="pressed" from="Debug Menu/Enemy" to="Shop" method="_on_enemy_pressed"]
 [connection signal="pressed" from="Debug Menu/KillEnemies" to="Debug Menu" method="_on_kill_enemies_pressed"]
 [connection signal="pressed" from="Debug Menu/SplitContainer/Button" to="Debug Menu" method="_on_button_pressed"]
+[connection signal="pressed" from="Debug Menu/FreeUpgrades" to="Debug Menu" method="_on_free_upgrades_pressed"]

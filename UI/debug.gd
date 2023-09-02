@@ -22,3 +22,7 @@ func _on_kill_enemies_pressed():
 
 func _on_button_pressed():
 	global.Currency += $SplitContainer/SpinBox.value
+
+
+func _on_free_upgrades_pressed():
+	$"../Sidebar/Editor".bought.emit()

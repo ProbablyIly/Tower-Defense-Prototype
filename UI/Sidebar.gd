@@ -13,10 +13,6 @@ func _ready():
 func _process(delta):
 	_update_sidebar()
 
-
-func _input(event):
-	pass
-
 func _update_sidebar():
 	if global.CurrentSelection != null:
 		
