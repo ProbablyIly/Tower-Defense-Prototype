@@ -5,6 +5,9 @@ const SPEED = 300.0
 var can_attack = false
 var detect_range = 100
 var attack_target
+
+var dmg = 10
+
 @onready var current_target
 
 @onready var hp = $HealthBar/ProgressBar
@@ -52,7 +55,7 @@ func _on_attack_body_entered(body):
 
 func _on_timer_timeout():
 	if can_attack:
-		attack_target.take_damage(30)
+		attack_target.take_damage(dmg)
 
 
 func _on_attack_body_exited(body):
@@ -60,9 +63,10 @@ func _on_attack_body_exited(body):
 		can_attack = false
 		current_target = null
 		
-func take_damage(dmg):
+func take_damage(dmg, parent):
 		hp.value -= dmg
 		if hp.value < 1:
 			queue_free()
+			parent.killed += 1
 
 

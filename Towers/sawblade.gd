@@ -15,7 +15,7 @@ var killed = 0
 @export var damage = 5
 @export var range = 140
 @export var hp_val = 30
-@export var cooldown = 0.5
+@export var cooldown = 1
 @export var charge = 12
 
 
@@ -30,6 +30,7 @@ var projectile = preload("res://projectile.tscn")
 func _ready():
 	creationTime = Time.get_ticks_msec() / 1000.0
 	timer.wait_time = cooldown
+	timer.start()
 
 func _process(delta):
 
@@ -87,7 +88,7 @@ func shoot_projectile(current_target):
 	var direction = (current_target.position - self.position).normalized()
 	projectile_instance.global_position = self.position
 	
-	var speed = 500
+	var speed = 1000
 	
 	var angle = atan2(direction.y, direction.x)
 	
@@ -96,6 +97,7 @@ func shoot_projectile(current_target):
 	projectile_instance.direction = direction
 	projectile_instance.speed = speed
 	projectile_instance.dmg = damage
+	projectile_instance.parent = self
 	
 	get_tree().get_root().add_child(projectile_instance)
 	
