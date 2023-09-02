@@ -68,5 +68,6 @@ func take_damage(dmg, parent):
 		if hp.value < 1:
 			queue_free()
 			parent.killed += 1
+			global.increase_currency()
 
 
