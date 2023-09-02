@@ -34,11 +34,12 @@ func _input(event):
 		IsSelected = false
 		CurrentTower.queue_free()
 		
-	if Input.is_action_just_pressed("copy") and CurrentTower != null:
-		var copy = global.CurrentSelection.duplicate()
-		get_tree().get_root().add_child(copy)
-		CurrentTower = copy
-		IsSelected = true
+	#if Input.is_action_just_pressed("copy") and CurrentTower != null:
+		#var copy = global.CurrentSelection.duplicate(2)
+		#copy.remove_from_group("selection")
+		#get_tree().get_root().add_child(copy)
+		#CurrentTower = copy
+	#	IsSelected = true
 
 
 func _on_tower_button_pressed():
