@@ -31,6 +31,9 @@ func _process(delta):
 	if global.CurrentSelection != LastSelection:
 		editor_update()
 		
+	if global.CurrentSelection == null:
+		editor_update()
+		
 		if global.CurrentSelection != null:
 			old_dmg = global.CurrentSelection.damage
 			old_range = global.CurrentSelection.range

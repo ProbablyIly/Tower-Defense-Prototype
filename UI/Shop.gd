@@ -30,7 +30,10 @@ func _input(event):
 			var newalpha = alpha
 			newalpha.a = 1
 			CurrentTower.modulate = newalpha 
-
+	if Input.is_action_just_pressed("rmb") and CurrentTower != null:
+		IsSelected = false
+		CurrentTower.queue_free()
+		
 
 func _on_tower_button_pressed():
 	var tower_instance = tower_scene.instantiate()
