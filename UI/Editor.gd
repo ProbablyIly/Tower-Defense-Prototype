@@ -107,12 +107,18 @@ func editor_update():
 	
 	if LastSelection != null:
 		if apply == false:
-			LastSelection.range = old_range
-			LastSelection.damage = old_dmg
-			LastSelection.hp_val = old_hp
-			LastSelection.hp_scene.initialize_hp()
-			LastSelection.cooldown = old_cooldown 
-			LastSelection.charge = old_charge
+			if "range" in LastSelection:
+				LastSelection.range = old_range
+			if "damage" in LastSelection:
+				LastSelection.damage = old_dmg
+			if "hp_val" in LastSelection:
+				LastSelection.hp_val = old_hp
+			if "hp_scene" in LastSelection:
+				LastSelection.hp_scene.initialize_hp()
+			if "cooldown" in LastSelection:
+				LastSelection.cooldown = old_cooldown 
+			if "charge" in LastSelection:
+				LastSelection.charge = old_charge
 			
 		apply = false
 
@@ -211,6 +217,3 @@ func fibonacci(n):
 		return fibonacci(n-1) + fibonacci(n-2)
 	if negative == true:
 		return (fibonacci(n-1) + fibonacci(n-2))*-1
-
-
-
