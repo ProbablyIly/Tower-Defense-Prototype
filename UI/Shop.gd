@@ -35,15 +35,11 @@ func _input(event):
 		CurrentTower.queue_free()
 		
 	if Input.is_action_just_pressed("copy") and CurrentTower != null:
-		var copy = CurrentTower.duplicate()
-		CurrentTower.remove_from_group("selection")
-		CurrentTower.sprite.material.set_shader_parameter("apply_outline", 0)
-		CurrentTower.sprite.material.set_shader_parameter("width", 6)
+		var copy = global.CurrentSelection.duplicate()
 		get_tree().get_root().add_child(copy)
 		CurrentTower = copy
 		IsSelected = true
-		
-		
+
 
 func _on_tower_button_pressed():
 	var tower_instance = tower_scene.instantiate()
