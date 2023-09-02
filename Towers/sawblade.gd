@@ -18,6 +18,17 @@ var killed = 0
 @export var cooldown = 1
 @export var charge = 6
 
+var dmg_off = 0
+var range_off = 0
+var hp_off = 0
+var cooldown_off = 0
+var charge_off = 0
+
+var dmg_og = damage/5
+var range_og = (range-100)/10
+var hp_og = hp_val/10
+var cooldown_og = cooldown*5
+var charge_og = charge
 
 var creationTime: float = 0
 var minutes = 0

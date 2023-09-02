@@ -9,13 +9,11 @@ extends StaticBody2D
 @onready var gizmo = $Gizmo
 @onready var sprite =  $Sprite
 
-
 var killed
-var damage
-var range
-var cooldown
+
 @export var hp_val = 90
-var charge
+var hp_off = 0
+var hp_og = hp_val/10
 
 var creationTime: float = 0
 var minutes = 0

@@ -8,13 +8,12 @@ extends StaticBody2D
 @onready var mouse = false
 @onready var gizmo = $Gizmo
 
-
 var killed
-var damage
-var range
+ 
 var hp_val = 180
-var cooldown
-var charge
+var hp_off = 0
+var hp_og = hp_val/10
+ 
 
 @onready var sprite =  $Sprite
 

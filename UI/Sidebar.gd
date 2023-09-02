@@ -20,7 +20,7 @@ func _input(event):
 func _update_sidebar():
 	if global.CurrentSelection != null:
 		
-		if global.CurrentSelection.damage != null: 
+		if "damage" in global.CurrentSelection: 
 			$Inspector/DPSContainer.visible = true
 			$Inspector/DPSContainer/DPSBox.text = str(snapped(global.CurrentSelection.damage/global.CurrentSelection.cooldown, 0.01)) + "/s"
 		else:
@@ -35,7 +35,7 @@ func _update_sidebar():
 			$Inspector/KilledContainer/KilledBox.text = "null"
 			$Inspector/KilledContainer.visible = false
 		
-		if global.CurrentSelection.cooldown != null: 
+		if "cooldown" in global.CurrentSelection: 
 			$Inspector/CooldownContainer.visible = true
 			$Inspector/CooldownContainer/CoolBox.text = str(snapped(global.CurrentSelection.timer.time_left, 0.1)) + "s"
 		else:

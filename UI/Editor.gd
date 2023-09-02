@@ -19,24 +19,11 @@ var old_hp
 var old_cooldown
 var old_charge
 
-var dmg_off = 0
-var range_off = 0
-var hp_off = 0
-var cooldown_off = 0
-var charge_off = 0
-
 var dmg_diff = 0
 var range_diff = 0
 var hp_diff = 0
 var cooldown_diff = 0
 var charge_diff = 0
-
-var dmg_og = 0
-var range_og = 0
-var hp_og = 0
-var cooldown_og = 0
-var charge_og = 0
-
 
 var price = 0
 
@@ -63,11 +50,16 @@ func _process(delta):
 		
 		
 		if global.CurrentSelection != null:
-			old_dmg = global.CurrentSelection.damage
-			old_range = global.CurrentSelection.range
-			old_hp = global.CurrentSelection.hp_val
-			old_cooldown = global.CurrentSelection.cooldown
-			old_charge = global.CurrentSelection.charge
+			if "damage" in global.CurrentSelection:
+				old_dmg = global.CurrentSelection.damage
+			if "range" in global.CurrentSelection:
+				old_range = global.CurrentSelection.range
+			if "hp_val" in global.CurrentSelection:
+				old_hp = global.CurrentSelection.hp_val
+			if "cooldown" in global.CurrentSelection:
+				old_cooldown = global.CurrentSelection.cooldown
+			if "charge" in global.CurrentSelection:
+				old_charge = global.CurrentSelection.charge
 			
 		LastSelection = global.CurrentSelection
 			
@@ -80,34 +72,33 @@ func _process(delta):
 		
 	check_price()
 
-	
 func editor_update():
 	if global.CurrentSelection != null:
-		if global.CurrentSelection.range != null:
+		if "range" in global.CurrentSelection:
 			$RangeContainer.visible = true
 			rangebox.value = (global.CurrentSelection.range-100) / range_mul
 		else:
 			$RangeContainer.visible = false
 	
-		if global.CurrentSelection.damage != null:
+		if "damage" in global.CurrentSelection:
 			$DamageContainer.visible = true
 			damagebox.value = global.CurrentSelection.damage / dmg_mul
 		else:
 			$DamageContainer.visible = false
 		
-		if global.CurrentSelection.hp_val != null:
+		if "hp_val" in global.CurrentSelection:
 			$HealthContainer.visible = true
 			healthbox.value = global.CurrentSelection.hp_val / hp_mul
 		else:
 			$HealthContainer.visible = false
 	
-		if global.CurrentSelection.cooldown != null:
+		if "cooldown" in global.CurrentSelection:
 			$CooldownContainer.visible = true
 			coolbox.value = global.CurrentSelection.cooldown * cooldown_mul
 		else:
 			$CooldownContainer.visible = false
 		
-		if global.CurrentSelection.charge != null:
+		if "charge" in global.CurrentSelection:
 			$ChargeContainer.visible = true
 			chargebox.value = global.CurrentSelection.charge
 		else:
@@ -127,40 +118,52 @@ func editor_update():
 
 func check_price():
 	if global.CurrentSelection != null:
+		
 		price = 0
-
-		if global.CurrentSelection.damage != null:
-			dmg_og = global.CurrentSelection.damage/dmg_mul
-		if global.CurrentSelection.range != null:
-			range_og = (global.CurrentSelection.range-100)/range_mul
-		if global.CurrentSelection.hp_val != null:
-			hp_og = global.CurrentSelection.hp_val/hp_mul
-		if global.CurrentSelection.cooldown != null:
-			cooldown_og = global.CurrentSelection.cooldown*cooldown_mul
-		if global.CurrentSelection.charge != null:
-			charge_og = global.CurrentSelection.charge
 	
-		if global.CurrentSelection.damage != null:
-			dmg_diff = (dmg_og - old_dmg/dmg_mul)-dmg_off
-		if global.CurrentSelection.range != null:
-			range_diff = (range_og - (old_range-100)/range_mul)-range_off 
-		if global.CurrentSelection.hp_val != null:
-			hp_diff = (hp_og - old_hp/hp_mul)-hp_off
-		if global.CurrentSelection.cooldown != null:
-			cooldown_diff = (cooldown_og - old_cooldown*cooldown_mul)-cooldown_off
-		if global.CurrentSelection.charge != null:
-			charge_diff = (charge_og - old_charge)-charge_off
+		dmg_diff = 0
+		range_diff = 0
+		hp_diff = 0
+		cooldown_diff = 0
+		charge_diff = 0
+		
+		var fibo_off = 0
+		
+	
+		if "damage" in global.CurrentSelection:
+			dmg_diff = (global.CurrentSelection.damage/dmg_mul - global.CurrentSelection.dmg_og)
+			fibo_off += fibonacci(global.CurrentSelection.dmg_off)
+		if "range" in global.CurrentSelection:
+			range_diff = ((global.CurrentSelection.range-100)/range_mul - global.CurrentSelection.range_og)
+			fibo_off += fibonacci(global.CurrentSelection.range_off)
+		if "hp_val" in global.CurrentSelection:
+			hp_diff = (global.CurrentSelection.hp_val/hp_mul - global.CurrentSelection.hp_og)
+			fibo_off += fibonacci(global.CurrentSelection.hp_off)
+		if "cooldown" in global.CurrentSelection:
+			cooldown_diff = (global.CurrentSelection.cooldown * cooldown_mul - global.CurrentSelection.cooldown_og)
+			fibo_off += fibonacci(global.CurrentSelection.cooldown_off*-1)
+		if "charge" in global.CurrentSelection:
+			charge_diff = (global.CurrentSelection.charge - global.CurrentSelection.charge_og)
+			fibo_off += fibonacci(global.CurrentSelection.charge_off*1)
 			
-		price = fibonacci(dmg_diff)+fibonacci(range_diff)+fibonacci(hp_diff)+fibonacci(cooldown_diff*-1)+fibonacci(charge_diff*-1)
+		var fibo = fibonacci(dmg_diff)+fibonacci(range_diff)+fibonacci(hp_diff)+fibonacci(cooldown_diff*-1)+fibonacci(charge_diff*-1)
+		
+		
+		price = fibo - fibo_off 
 		
 		$HBoxContainer/Button.text = str(price)
 		
 		if isbought == true:
-			dmg_off += dmg_diff
-			range_off += range_diff
-			hp_off += hp_diff
-			cooldown_off += cooldown_diff
-			charge_off += charge_diff
+			if "damage" in global.CurrentSelection:
+				global.CurrentSelection.dmg_off = dmg_diff
+			if "range" in global.CurrentSelection:
+				global.CurrentSelection.range_off = range_diff
+			if "hp_val" in global.CurrentSelection:
+				global.CurrentSelection.hp_off = hp_diff
+			if "cooldown" in global.CurrentSelection:
+				global.CurrentSelection.cooldown_off = cooldown_diff
+			if "charge" in global.CurrentSelection:
+				global.CurrentSelection.charge_off = charge_diff
 			price = 0
 			$HBoxContainer/Button.text = str(price)
 			isbought = false
@@ -173,7 +176,7 @@ func _on_button_pressed():
 		global.Currency -= price
 		apply = true
 		bought.emit()
-		if global.CurrentSelection.cooldown != null:
+		if "cooldown" in global.CurrentSelection:
 			global.CurrentSelection.timer.wait_time = coolbox.value / cooldown_mul
 	
 func _on_damage_box_value_changed(value):
