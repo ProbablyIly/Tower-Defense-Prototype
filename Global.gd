@@ -4,6 +4,5 @@ extends Node
 
 @onready var Currency = 1.0
 
-
 func increase_currency():
 	Currency += round(Currency)/10

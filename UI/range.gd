@@ -16,5 +16,5 @@ func _process(delta):
 func _draw():
 	if parent.is_in_group("selection"):
 		var local_position = global_transform.affine_inverse() * parent.global_position
-		draw_circle(local_position, parent.range, Color(Color.DEEP_SKY_BLUE, 0.2))
+		draw_circle(local_position, parent.range*2, Color(Color.DEEP_SKY_BLUE, 0.2))
 		

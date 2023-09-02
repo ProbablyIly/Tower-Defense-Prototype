@@ -23,7 +23,7 @@ func _ready():
 		mov_g.scale = sprite.scale * mov_g.scale * 5
 	if sprite is AnimatedSprite2D:
 		var tex = sprite.sprite_frames.get_frame_texture("default",0)
-		rad = tex.get_width() * 0.11
+		rad = tex.get_width() * 0.22
 		rot_g.scale = sprite.scale * rot_g.scale * 3.5
 		mov_g.scale = sprite.scale * mov_g.scale * 3.5
 	

@@ -104,7 +104,7 @@ func shoot_projectile(current_target):
 func target():
 	var targets = get_tree().get_nodes_in_group("enemy")
 	var nearest_target = null
-	var nearest_distance = range
+	var nearest_distance = range*2
 	
 	for target in targets:
 		var distance = self.position.distance_to(target.position)
