@@ -13,9 +13,9 @@ extends StaticBody2D
 
 var killed = 0
 @export var damage = 5
-@export var range = 100
+@export var range = 140
 @export var hp_val = 30
-@export var cooldown = 5
+@export var cooldown = 0.5
 @export var charge = 12
 
 
@@ -24,6 +24,7 @@ var minutes = 0
 var hours = 0
 var mins = 0
 
+var projectile = preload("res://projectile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,6 +75,40 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	mouse = false
 		
-
 func _on_timer_timeout():
-	pass # Replace with function body.
+	var target = target()
+	if target != null:
+		shoot_projectile(target)
+	
+func shoot_projectile(current_target):
+	var projectile_instance = projectile.instantiate()
+
+	
+	var direction = (current_target.position - self.position).normalized()
+	projectile_instance.global_position = self.position
+	
+	var speed = 500
+	
+	var angle = atan2(direction.y, direction.x)
+	
+	projectile_instance.rotation_degrees = rad_to_deg(angle)
+	
+	projectile_instance.direction = direction
+	projectile_instance.speed = speed
+	projectile_instance.dmg = damage
+	
+	get_tree().get_root().add_child(projectile_instance)
+	
+func target():
+	var targets = get_tree().get_nodes_in_group("enemy")
+	var nearest_target = null
+	var nearest_distance = range
+	
+	for target in targets:
+		var distance = self.position.distance_to(target.position)
+		if distance < nearest_distance:
+			nearest_distance = distance
+			nearest_target = target
+			
+	return nearest_target
+	
