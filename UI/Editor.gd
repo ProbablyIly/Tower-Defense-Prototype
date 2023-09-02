@@ -6,6 +6,9 @@ extends VBoxContainer
 @onready var coolbox = $CooldownContainer/CooldownBox
 @onready var chargebox = $ChargeContainer/ChargeBox
 
+signal bought
+var isbought = false
+
 
 var LastSelection
 var apply = false
@@ -15,6 +18,25 @@ var old_range
 var old_hp
 var old_cooldown
 var old_charge
+
+var dmg_off = 0
+var range_off = 0
+var hp_off = 0
+var cooldown_off = 0
+var charge_off = 0
+
+var dmg_diff = 0
+var range_diff = 0
+var hp_diff = 0
+var cooldown_diff = 0
+var charge_diff = 0
+
+var dmg_og = 0
+var range_og = 0
+var hp_og = 0
+var cooldown_og = 0
+var charge_og = 0
+
 
 var price = 0
 
@@ -38,7 +60,6 @@ func _ready():
 func _process(delta):
 	if global.CurrentSelection != LastSelection:
 		editor_update()
-		
 		
 		
 		if global.CurrentSelection != null:
@@ -106,39 +127,54 @@ func editor_update():
 
 func check_price():
 	if global.CurrentSelection != null:
-		var dmg_diff = 0
-		var range_diff = 0
-		var hp_diff = 0
-		var cooldown_diff = 0
-		var charge_diff = 0
-		
-		var dmg_og = global.CurrentSelection.damage/dmg_mul
-		var range_og = (global.CurrentSelection.range-100)/range_mul
-		var hp_og = global.CurrentSelection.hp_val/hp_mul
-		var cooldown_og = global.CurrentSelection.cooldown*cooldown_mul
-		var charge_og = global.CurrentSelection.charge
-		
+		price = 0
+
 		if global.CurrentSelection.damage != null:
-			dmg_diff = dmg_og - old_dmg/dmg_mul
+			dmg_og = global.CurrentSelection.damage/dmg_mul
 		if global.CurrentSelection.range != null:
-			range_diff = range_og - (old_range-100)/range_mul 
+			range_og = (global.CurrentSelection.range-100)/range_mul
 		if global.CurrentSelection.hp_val != null:
-			hp_diff = hp_og - old_hp/hp_mul
+			hp_og = global.CurrentSelection.hp_val/hp_mul
 		if global.CurrentSelection.cooldown != null:
-			cooldown_diff = cooldown_og - old_cooldown*cooldown_mul
+			cooldown_og = global.CurrentSelection.cooldown*cooldown_mul
 		if global.CurrentSelection.charge != null:
-			charge_diff = charge_og - old_charge
+			charge_og = global.CurrentSelection.charge
+	
+		if global.CurrentSelection.damage != null:
+			dmg_diff = (dmg_og - old_dmg/dmg_mul)-dmg_off
+		if global.CurrentSelection.range != null:
+			range_diff = (range_og - (old_range-100)/range_mul)-range_off 
+		if global.CurrentSelection.hp_val != null:
+			hp_diff = (hp_og - old_hp/hp_mul)-hp_off
+		if global.CurrentSelection.cooldown != null:
+			cooldown_diff = (cooldown_og - old_cooldown*cooldown_mul)-cooldown_off
+		if global.CurrentSelection.charge != null:
+			charge_diff = (charge_og - old_charge)-charge_off
 			
 		price = fibonacci(dmg_diff)+fibonacci(range_diff)+fibonacci(hp_diff)+fibonacci(cooldown_diff*-1)+fibonacci(charge_diff*-1)
-			
 		
 		$HBoxContainer/Button.text = str(price)
-
+		
+		if isbought == true:
+			dmg_off += dmg_diff
+			range_off += range_diff
+			hp_off += hp_diff
+			cooldown_off += cooldown_diff
+			charge_off += charge_diff
+			price = 0
+			$HBoxContainer/Button.text = str(price)
+			isbought = false
+		
+func _on_bought():
+	isbought = true
 
 func _on_button_pressed():
-	apply = true
-	if global.CurrentSelection.cooldown != null:
-		global.CurrentSelection.timer.wait_time = coolbox.value / cooldown_mul
+	if price <= global.Currency:
+		global.Currency -= price
+		apply = true
+		bought.emit()
+		if global.CurrentSelection.cooldown != null:
+			global.CurrentSelection.timer.wait_time = coolbox.value / cooldown_mul
 	
 func _on_damage_box_value_changed(value):
 	global.CurrentSelection.damage = damagebox.value * dmg_mul
@@ -172,3 +208,6 @@ func fibonacci(n):
 		return fibonacci(n-1) + fibonacci(n-2)
 	if negative == true:
 		return (fibonacci(n-1) + fibonacci(n-2))*-1
+
+
+
