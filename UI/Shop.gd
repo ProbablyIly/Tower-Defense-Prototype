@@ -41,7 +41,6 @@ func _input(event):
 		#CurrentTower = copy
 	#	IsSelected = true
 
-
 func _on_tower_button_pressed():
 	var tower_instance = tower_scene.instantiate()
 	get_tree().get_root().add_child(tower_instance)

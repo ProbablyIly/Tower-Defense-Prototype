@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccy4uqqmuum3u"]
+[gd_scene load_steps=11 format=3 uid="uid://ccy4uqqmuum3u"]
 
 [ext_resource type="Script" path="res://UI/Sidebar.gd" id="1_u8r1p"]
 [ext_resource type="Script" path="res://UI/Editor.gd" id="2_8makj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ktr5tafdr0cf" path="res://Assets/Barricade/Barricade.png" id="4_r6ywg"]
 [ext_resource type="PackedScene" uid="uid://chrqx6on3cmkc" path="res://Towers/Icons/sawicon.tscn" id="5_t4ebf"]
 [ext_resource type="Script" path="res://UI/CurreencyValue.gd" id="7_h37x7"]
+[ext_resource type="Script" path="res://UI/debug.gd" id="8_nhsar"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5354"]
 size = Vector2(174, 648)
@@ -260,10 +261,6 @@ vertical_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="Sidebar/Outliner"]
 layout_mode = 2
 
-[node name="Enemy" type="Button" parent="Sidebar/Outliner"]
-layout_mode = 2
-text = "Summon Enemies"
-
 [node name="Shop" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 177.0
@@ -311,13 +308,34 @@ size_flags_horizontal = 8
 text = "0"
 script = ExtResource("7_h37x7")
 
+[node name="Debug Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -168.0
+offset_top = 70.0
+offset_right = -20.0005
+offset_bottom = 110.0
+grow_horizontal = 0
+script = ExtResource("8_nhsar")
+
+[node name="Enemy" type="Button" parent="Debug Menu"]
+layout_mode = 2
+text = "Summon Enemies"
+
+[node name="KillEnemies" type="Button" parent="Debug Menu"]
+layout_mode = 2
+text = "Kill all enemies"
+
 [connection signal="value_changed" from="Sidebar/Editor/DamageContainer/DamageBox" to="Sidebar/Editor" method="_on_damage_box_value_changed"]
 [connection signal="value_changed" from="Sidebar/Editor/RangeContainer/RangeBox" to="Sidebar/Editor" method="_on_range_box_value_changed"]
 [connection signal="value_changed" from="Sidebar/Editor/HealthContainer/Healthbox" to="Sidebar/Editor" method="_on_healthbox_value_changed"]
 [connection signal="value_changed" from="Sidebar/Editor/CooldownContainer/CooldownBox" to="Sidebar/Editor" method="_on_cooldown_box_value_changed"]
 [connection signal="value_changed" from="Sidebar/Editor/ChargeContainer/ChargeBox" to="Sidebar/Editor" method="_on_charge_box_value_changed"]
 [connection signal="pressed" from="Sidebar/Editor/HBoxContainer/Button" to="Sidebar/Editor" method="_on_button_pressed"]
-[connection signal="pressed" from="Sidebar/Outliner/Enemy" to="Shop" method="_on_enemy_pressed"]
 [connection signal="pressed" from="Shop/TowerButton" to="Shop" method="_on_tower_button_pressed"]
 [connection signal="pressed" from="Shop/BarricadeButton" to="Shop" method="_on_barricade_button_pressed"]
 [connection signal="pressed" from="Shop/SawButton" to="Shop" method="_on_saw_button_pressed"]
+[connection signal="pressed" from="Debug Menu/Enemy" to="Shop" method="_on_enemy_pressed"]
+[connection signal="pressed" from="Debug Menu/KillEnemies" to="Debug Menu" method="_on_kill_enemies_pressed"]
