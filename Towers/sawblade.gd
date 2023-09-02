@@ -16,7 +16,7 @@ var killed = 0
 @export var range = 140
 @export var hp_val = 30
 @export var cooldown = 1
-@export var charge = 12
+@export var charge = 6
 
 
 var creationTime: float = 0

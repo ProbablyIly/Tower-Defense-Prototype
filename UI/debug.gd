@@ -19,4 +19,6 @@ func _on_kill_enemies_pressed():
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		enemy.queue_free()
-	
+
+func _on_button_pressed():
+	global.Currency += $SplitContainer/SpinBox.value
