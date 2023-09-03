@@ -26,3 +26,8 @@ func _on_button_pressed():
 
 func _on_free_upgrades_pressed():
 	$"../Sidebar/Editor".bought.emit()
+	
+
+func _on_curve_pressed():
+	var curve = load("res://misc/EditorPrices.tres")
+	$HBoxContainer/Label.text = str(snapped(curve.sample($HBoxContainer/SpinBox.value/50),1))

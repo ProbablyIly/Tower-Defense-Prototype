@@ -350,6 +350,22 @@ text = "moneyz"
 layout_mode = 2
 text = "Apply upgrades"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug Menu"]
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="Debug Menu/HBoxContainer"]
+layout_mode = 2
+max_value = 128.0
+
+[node name="curve" type="Button" parent="Debug Menu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "curve"
+
+[node name="Label" type="Label" parent="Debug Menu/HBoxContainer"]
+layout_mode = 2
+text = "value"
+
 [node name="Charge" parent="." instance=ExtResource("9_w5ygf")]
 layout_mode = 1
 anchor_left = 0.16
@@ -373,3 +389,4 @@ value = 30.0
 [connection signal="pressed" from="Debug Menu/KillEnemies" to="Debug Menu" method="_on_kill_enemies_pressed"]
 [connection signal="pressed" from="Debug Menu/SplitContainer/Button" to="Debug Menu" method="_on_button_pressed"]
 [connection signal="pressed" from="Debug Menu/FreeUpgrades" to="Debug Menu" method="_on_free_upgrades_pressed"]
+[connection signal="pressed" from="Debug Menu/HBoxContainer/curve" to="Debug Menu" method="_on_curve_pressed"]

@@ -144,29 +144,28 @@ func check_price():
 		cooldown_diff = 0
 		charge_diff = 0
 		
-		var fibo_off = 0
-		
+		var seq_off = 0
 	
 		if "damage" in global.CurrentSelection:
 			dmg_diff = (global.CurrentSelection.damage/dmg_mul - global.CurrentSelection.dmg_og)
-			fibo_off += fibonacci(global.CurrentSelection.dmg_off)
+			seq_off += pricing(global.CurrentSelection.dmg_off)
 		if "range" in global.CurrentSelection:
 			range_diff = ((global.CurrentSelection.range-100)/range_mul - global.CurrentSelection.range_og)
-			fibo_off += fibonacci(global.CurrentSelection.range_off)
+			seq_off += pricing(global.CurrentSelection.range_off)
 		if "hp_val" in global.CurrentSelection:
 			hp_diff = (global.CurrentSelection.hp_val/hp_mul - global.CurrentSelection.hp_og)
-			fibo_off += fibonacci(global.CurrentSelection.hp_off)
+			seq_off += pricing(global.CurrentSelection.hp_off)
 		if "cooldown" in global.CurrentSelection:
 			cooldown_diff = (global.CurrentSelection.cooldown * cooldown_mul - global.CurrentSelection.cooldown_og)
-			fibo_off += fibonacci(global.CurrentSelection.cooldown_off*-1)
+			seq_off += pricing(global.CurrentSelection.cooldown_off*-1)
 		if "charge" in global.CurrentSelection:
 			charge_diff = (global.CurrentSelection.charge - global.CurrentSelection.charge_og)
-			fibo_off += fibonacci(global.CurrentSelection.charge_off*1)
+			seq_off += pricing(global.CurrentSelection.charge_off*1)
 			
-		var fibo = fibonacci(dmg_diff)+fibonacci(range_diff)+fibonacci(hp_diff)+fibonacci(cooldown_diff*-1)+fibonacci(charge_diff*-1)
+		var seq = pricing(dmg_diff)+pricing(range_diff)+pricing(hp_diff)+pricing(cooldown_diff*-1)+pricing(charge_diff*-1)
 		
 		
-		price = fibo - fibo_off 
+		price = seq - seq_off 
 		
 		$HBoxContainer/Button.text = str(price)
 		
@@ -234,3 +233,9 @@ func fibonacci(n):
 		return fibonacci(n-1) + fibonacci(n-2)
 	if negative == true:
 		return (fibonacci(n-1) + fibonacci(n-2))*-1
+
+func pricing(n):
+	if n == 0:
+		return 0
+	else:
+		return snapped(pow(n,2)/sqrt(abs(n)), 1)
