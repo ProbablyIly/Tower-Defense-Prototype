@@ -47,8 +47,8 @@ func _ready():
 	
 	
 func _process(delta):
-	editor_update()
 	if global.CurrentSelection != LastSelection:
+		editor_update()
 		
 		if global.CurrentSelection != null:
 			if "damage" in global.CurrentSelection:
