@@ -1,12 +1,19 @@
 extends ProgressBar
 
 func _process(delta):
-	value = global.charge 
-
+	pass
 
 func _on_timer_timeout():
 	if global.charge <= 60:
+		update_charge(2)
+		
+func update_charge(n):
 		var tween = create_tween()
-		global.charge += 10
-		tween.tween_property(self, "value", global.charge, 1)
+		print(global.charge)
+		global.charge += n
+		tween.tween_property(self, "value", global.charge, $Timer.wait_time)
+		
+		
+	
+	
 

@@ -91,7 +91,8 @@ func _on_timer_timeout():
 	var target = target()
 	if target != null:
 		if charge <= global.charge:
-			global.charge -= charge
+			#global.charge -= charge
+			CHARGE.update_charge(-1*charge)
 			shoot_projectile(target)
 		
 	
