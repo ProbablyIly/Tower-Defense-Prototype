@@ -90,7 +90,7 @@ func _on_area_2d_mouse_exited():
 func _on_timer_timeout():
 	var target = target()
 	if target != null:
-		if charge >= global.charge:
+		if charge <= global.charge:
 			global.charge -= charge
 			shoot_projectile(target)
 		

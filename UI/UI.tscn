@@ -354,10 +354,10 @@ text = "Apply upgrades"
 layout_mode = 1
 anchor_left = 0.16
 anchor_top = 0.18
-anchor_right = 0.175
-anchor_bottom = 0.5
+anchor_right = 0.17
+anchor_bottom = 0.7
 offset_bottom = 0.0399323
-value = 55.45
+value = 30.0
 
 [connection signal="bought" from="Sidebar/Editor" to="Sidebar/Editor" method="_on_bought"]
 [connection signal="value_changed" from="Sidebar/Editor/DamageContainer/DamageBox" to="Sidebar/Editor" method="_on_damage_box_value_changed"]
