@@ -326,13 +326,22 @@ layout_mode = 2
 text = "Debug Menu"
 horizontal_alignment = 1
 
-[node name="Enemy" type="Button" parent="Debug Menu"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Debug Menu"]
 layout_mode = 2
-text = "Summon Enemies"
+
+[node name="SpinBox" type="SpinBox" parent="Debug Menu/HBoxContainer2"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="Enemy" type="Button" parent="Debug Menu/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Summon"
 
 [node name="KillEnemies" type="Button" parent="Debug Menu"]
 layout_mode = 2
-text = "Kill all enemies"
+text = "Kill enemies"
 
 [node name="SplitContainer" type="SplitContainer" parent="Debug Menu"]
 layout_mode = 2
@@ -349,22 +358,6 @@ text = "moneyz"
 [node name="FreeUpgrades" type="Button" parent="Debug Menu"]
 layout_mode = 2
 text = "Apply upgrades"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Debug Menu"]
-layout_mode = 2
-
-[node name="SpinBox" type="SpinBox" parent="Debug Menu/HBoxContainer"]
-layout_mode = 2
-max_value = 128.0
-
-[node name="curve" type="Button" parent="Debug Menu/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "curve"
-
-[node name="Label" type="Label" parent="Debug Menu/HBoxContainer"]
-layout_mode = 2
-text = "value"
 
 [node name="Charge" parent="." instance=ExtResource("9_w5ygf")]
 layout_mode = 1
@@ -385,8 +378,7 @@ value = 30.0
 [connection signal="pressed" from="Shop/TowerButton" to="Shop" method="_on_tower_button_pressed"]
 [connection signal="pressed" from="Shop/BarricadeButton" to="Shop" method="_on_barricade_button_pressed"]
 [connection signal="pressed" from="Shop/SawButton" to="Shop" method="_on_saw_button_pressed"]
-[connection signal="pressed" from="Debug Menu/Enemy" to="Shop" method="_on_enemy_pressed"]
+[connection signal="pressed" from="Debug Menu/HBoxContainer2/Enemy" to="Debug Menu" method="_on_enemy_pressed"]
 [connection signal="pressed" from="Debug Menu/KillEnemies" to="Debug Menu" method="_on_kill_enemies_pressed"]
 [connection signal="pressed" from="Debug Menu/SplitContainer/Button" to="Debug Menu" method="_on_button_pressed"]
 [connection signal="pressed" from="Debug Menu/FreeUpgrades" to="Debug Menu" method="_on_free_upgrades_pressed"]
-[connection signal="pressed" from="Debug Menu/HBoxContainer/curve" to="Debug Menu" method="_on_curve_pressed"]

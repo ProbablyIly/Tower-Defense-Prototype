@@ -31,3 +31,7 @@ func _on_free_upgrades_pressed():
 func _on_curve_pressed():
 	var curve = load("res://misc/EditorPrices.tres")
 	$HBoxContainer/Label.text = str(snapped(curve.sample($HBoxContainer/SpinBox.value/50),1))
+
+
+func _on_enemy_pressed():
+	spawner.spawn_enemy($HBoxContainer2/SpinBox.value)

@@ -216,23 +216,6 @@ func _on_cooldown_box_value_changed(value):
 func _on_charge_box_value_changed(value):
 	global.CurrentSelection.charge = chargebox.value
 	changed = true
-	
-func fibonacci(n):
-	var negative = false
-	if n < -1:
-		n = abs(n)
-		negative = true
-	if n == 0:
-		return 0
-	elif n == 1:
-		return 1
-	elif n == -1:
-		return -1
-		
-	if negative == false:
-		return fibonacci(n-1) + fibonacci(n-2)
-	if negative == true:
-		return (fibonacci(n-1) + fibonacci(n-2))*-1
 
 func pricing(n):
 	if n == 0:

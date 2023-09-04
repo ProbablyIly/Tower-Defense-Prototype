@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpoxb8wm5og7x"]
+[gd_scene load_steps=4 format=3 uid="uid://dpoxb8wm5og7x"]
 
 [ext_resource type="Texture2D" uid="uid://bonbjvfhd7ewp" path="res://Assets/BG/Floor1.png" id="2_y6m6g"]
+[ext_resource type="Script" path="res://Spawner.gd" id="3_fvccj"]
 [ext_resource type="PackedScene" uid="uid://ccy4uqqmuum3u" path="res://UI/UI.tscn" id="5_nv715"]
 
 [node name="Node2D" type="Node2D"]
@@ -14,3 +15,6 @@ scale = Vector2(1.667, 1.667)
 position = Vector2(576, 324)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_y6m6g")
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("3_fvccj")
