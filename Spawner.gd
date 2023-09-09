@@ -6,6 +6,7 @@ var enemy_scene = preload("res://Enemies/enemy.tscn")
 var hoards = []
 var timer := Timer.new()
 
+@onready var progress = get_tree().get_nodes_in_group("round_progress")
 
 signal filler_signal
 signal chunk_signal()
@@ -20,7 +21,7 @@ var chunk_r = "none"
 var timedout = false
 
 func _ready():
-	pass # Replace with function body.
+	timer.one_shot = true
 
 func _process(delta):
 	if start_filler:
@@ -40,7 +41,6 @@ func spawn_enemy(n):
 func start_round():
 	initiate_round()
 	
-	var current_hoard = 0
 	var chunk_rolls = [0.3, 0.2, 0.5]
 	
 	for hoard in hoards:
@@ -52,6 +52,7 @@ func start_round():
 		start_filler = true
 		await filler_signal
 		start_filler = false
+		progress[0].increase()
 		print ("finished filler " + str(hoard) + " killed " + str(global.killed))
 
 		chunk_rolls.shuffle()
@@ -66,6 +67,7 @@ func start_round():
 			start_chunk = true
 			await chunk_signal
 			start_chunk = false
+			progress[0].increase()
 			print("finished chunk " + str(chunks_current) + " due to " + str(chunk_r))
 
 func start_timer(chunk):
@@ -76,7 +78,6 @@ func start_timer(chunk):
 	print(round_t * hoard_t * chunk_t)
 	timer.wait_time = (round_t * hoard_t * chunk_t)/10
 	print(timer.wait_time)
-	timer.one_shot = true
 	timer.start()
 
 func chunk_clear(n1):	
@@ -120,6 +121,8 @@ func initiate_round():
 	elif split == 3:
 		hoards.append(pool)
 		#logic for boosted round
+		
+	progress[0].initiate_markers(split)
 
 
 func _on_timer_timeout():

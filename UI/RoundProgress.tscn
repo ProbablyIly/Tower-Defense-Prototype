@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1ag8rnon4vl6"]
+
+[ext_resource type="Script" path="res://UI/RoundProgress.gd" id="1_plk7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kn7cv"]
+bg_color = Color(0.309804, 0.309804, 0.309804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4tlt"]
+bg_color = Color(0.8, 0.501961, 0.564706, 1)
+
+[sub_resource type="Theme" id="Theme_dn1ou"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_kn7cv")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_k4tlt")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lg3w"]
+bg_color = Color(0.494118, 0.176471, 0.721569, 1)
+
+[node name="ProgressBar" type="ProgressBar" groups=["round_progress"]]
+offset_right = 248.0
+offset_bottom = 27.0
+theme = SubResource("Theme_dn1ou")
+show_percentage = false
+script = ExtResource("1_plk7m")
+
+[node name="Marker1" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lg3w")
+
+[node name="Marker2" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lg3w")
+
+[node name="Marker3" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lg3w")
+
+[node name="Marker4" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lg3w")

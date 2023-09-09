@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccy4uqqmuum3u"]
+[gd_scene load_steps=13 format=3 uid="uid://ccy4uqqmuum3u"]
 
 [ext_resource type="Script" path="res://UI/Sidebar.gd" id="1_u8r1p"]
 [ext_resource type="Script" path="res://UI/Editor.gd" id="2_8makj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://UI/CurreencyValue.gd" id="7_h37x7"]
 [ext_resource type="Script" path="res://UI/debug.gd" id="8_nhsar"]
 [ext_resource type="PackedScene" uid="uid://3vikjk450lvj" path="res://UI/charge.tscn" id="9_w5ygf"]
+[ext_resource type="PackedScene" uid="uid://c1ag8rnon4vl6" path="res://UI/RoundProgress.tscn" id="10_fmdaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5354"]
 size = Vector2(174, 648)
@@ -371,6 +372,13 @@ anchor_right = 0.17
 anchor_bottom = 0.7
 offset_bottom = 0.0399323
 value = 30.0
+
+[node name="ProgressBar" parent="." instance=ExtResource("10_fmdaf")]
+layout_mode = 0
+offset_left = 672.465
+offset_top = 116.977
+offset_right = 920.465
+offset_bottom = 143.977
 
 [connection signal="bought" from="Sidebar/Editor" to="Sidebar/Editor" method="_on_bought"]
 [connection signal="value_changed" from="Sidebar/Editor/DamageContainer/DamageBox" to="Sidebar/Editor" method="_on_damage_box_value_changed"]
