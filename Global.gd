@@ -6,6 +6,12 @@ extends Node
 
 @onready var charge = 30
 
+@onready var round = 1
+
+@onready var difficulty = 1
+
+@onready var killed = 0
+
 func increase_currency():
 	Currency += round(Currency)/10
 

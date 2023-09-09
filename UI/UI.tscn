@@ -359,6 +359,10 @@ text = "moneyz"
 layout_mode = 2
 text = "Apply upgrades"
 
+[node name="StartRound" type="Button" parent="Debug Menu"]
+layout_mode = 2
+text = "Start Round"
+
 [node name="Charge" parent="." instance=ExtResource("9_w5ygf")]
 layout_mode = 1
 anchor_left = 0.16
@@ -382,3 +386,4 @@ value = 30.0
 [connection signal="pressed" from="Debug Menu/KillEnemies" to="Debug Menu" method="_on_kill_enemies_pressed"]
 [connection signal="pressed" from="Debug Menu/SplitContainer/Button" to="Debug Menu" method="_on_button_pressed"]
 [connection signal="pressed" from="Debug Menu/FreeUpgrades" to="Debug Menu" method="_on_free_upgrades_pressed"]
+[connection signal="pressed" from="Debug Menu/StartRound" to="Debug Menu" method="_on_start_round_pressed"]

@@ -35,3 +35,7 @@ func _on_curve_pressed():
 
 func _on_enemy_pressed():
 	spawner.spawn_enemy($HBoxContainer2/SpinBox.value)
+
+
+func _on_start_round_pressed():
+	spawner.start_round()

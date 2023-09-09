@@ -9,7 +9,6 @@ func _on_timer_timeout():
 		
 func update_charge(n):
 		var tween = create_tween()
-		print(global.charge)
 		global.charge += n
 		tween.tween_property(self, "value", global.charge, $Timer.wait_time)
 		

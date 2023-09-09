@@ -17,7 +17,6 @@ var hp_val = 30
 
 func _ready():
 	current_target = find()
-	print(current_target)
   
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -68,6 +67,7 @@ func take_damage(dmg, parent):
 		if hp.value < 1:
 			queue_free()
 			parent.killed += 1
+			global.killed += 1
 			global.increase_currency()
 
 
