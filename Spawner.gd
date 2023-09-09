@@ -103,6 +103,11 @@ func chunk_clear(n1):
 
 func initiate_round():
 	
+	filler = 0
+	chunk = 0
+	chunk_r = "none"
+	hoards = []
+	
 	var pool = 20 + (global.round * 10 * randf_range(0.5,1.5) * global.difficulty)
 	
 	var split = randi_range(0,3)

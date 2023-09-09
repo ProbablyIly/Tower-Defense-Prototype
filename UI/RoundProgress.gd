@@ -30,7 +30,6 @@ func initiate_markers(split):
 	current = 0
 	increase_i = 0
 	
-	
 	var width = size.x
 	
 	if split == 0:
